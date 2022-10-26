@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Crear Nuevo Album</title>
+</head>
+<body>
+    <div class="container">
+        <a href="/">Inicio</a>
+        <form method="post" action="/save-new" enctype="multipart/form-data" class="form-control">
+        Codigo de album:
+        <input type="text" name="codAlbum" id="txtCodAlbum " class="form-control" ><br>
+        Nombre:
+        <input type="text" name="nombre" id="nombre" class="form-control"><br>
+        Interprete:
+        <select name="interprete" id="interprete" class="form-control">
+            {% for inter in interpretes %}
+            <option value="{{inter[0]}}" >{{inter[1]}}</option>
+            {% endfor %}
+        </select><br>
+        Genero:
+        <select name="genero" id="genero" class="form-control">
+            {% for gen in generos %}
+            <option value="{{gen[0]}}">{{gen[1]}}</option>
+            {% endfor %}
+        </select><br>
+        Cantidad de Temas:
+        <input type="text" name="cantTemas" id="cantTemas" class="form-control"><br>
+        Discografica:
+        <select name="discografica" id="discografica" class="form-control">
+            {% for dicografica in discograficas %}
+            <option value="{{dicografica[0]}}">{{dicografica[1]}}</option>
+            {% endfor %}
+        </select><br>
+        Fecha de lanzamiento:
+        <input type="text" name="fecha" id="fecha" class="form-control"><br>
+        Formato:
+        <select name="formato" id="formato" class="form-control">
+            {% for formato in formatos %}
+            <option value="{{formato[0]}}">{{formato[1]}}</option>
+            {% endfor %}
+        </select><br>
+        Precio:
+        <input type="text" name="precio" id="precio " class="form-control"><br>
+        Cantidad:
+        <input type="text" name="cantidad" id="cantidad " class="form-control"><br>
+        Caratula:
+        <input type="text" name="caratula" id="caratula " class="form-control"><br>
+        <input type="submit" value="Guardar Nuevo" class="form-control">
+        
+    </form>
+    </div>
+    
+</body>
+</html>
