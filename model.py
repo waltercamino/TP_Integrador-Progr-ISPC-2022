@@ -200,7 +200,7 @@ class Conectar():
                 self.conexion.close()
                 print("Intéprete eliminado correctamente")
             except mysql.connector.Error as d_Error:
-             print("No se conectó", d_Error)
+                print("No se conectó", d_Error)
 
 #-------------------------------------------------------------------------------------------------------------------                    
 
@@ -217,7 +217,7 @@ class Conectar():
                 self.conexion.close()
                 print("Intéprete eliminado correctamente")
             except mysql.connector.Error as d_Error:
-             print("No se conectó", d_Error)
+                print("No se conectó", d_Error)
 
 #-------------------------------------------------------------------------------------------------------------------
 
@@ -272,6 +272,7 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                                 print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
 
+# EDITAR ALBUM
 
     def EditarAlbum(self,album,id):
         if self.conexion.is_connected():
@@ -296,7 +297,7 @@ class Conectar():
 
                 self.conexion.commit()
                 self.conexion.close()
-                print("Álbum insertado correctamente")        
+                print("Álbum editado correctamente")        
 
             except mysql.connector.Error as d_Error:
                                 print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
