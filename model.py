@@ -3,16 +3,17 @@ import mysql.connector
 
 # CONEXION A BASE DE DATOS #
 
-class Conectar(): 
-    
-    def __init__(self) -> None: 
+class Conectar():
+
+    def __init__(self) -> None:
         try:
-          self.conexion = mysql.connector.connect(
-                host = "localhost",
+            self.conexion = mysql.connector.connect(
+                host = 'localhost',
                 port = 3306,
-                user = "root",
-                password = "Aymara",
-                db = "disqueria"
+                user = 'root',
+                password = 'Aymara',
+                db = 'disqueria'
+
             )
         except mysql.connector.Error as d_Error:
             print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
@@ -163,62 +164,6 @@ class Conectar():
                     print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
 
 
-# ------------------------------------------------------------------------------------------------------------------
-
-
-# INSERTAR INTÉRPRETE #
-   
-    def InsertarInterprete(self, nombre, nacionalidad, foto):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "INSERT into interprete values(null,%s,%s,%s)"
-
-                data = (nombre,nacionalidad,foto)
-
-                cursor.execute(sentenciaSQL,data)
-
-                self.conexion.commit()
-                self.conexion.close()
-                print("Intérprete insertado correctamente")
-                
-            except mysql.connector.Error as d_Error:
-                    print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
-
-#-------------------------------------------------------------------------------------------------------------------                    
-
-# ELIMINAR INTÉRPRETE
-
-    def EliminarInterprete(self, id_interprete):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "DELETE from interprete WHERE id_interprete = %s "
-                data =(id_interprete,)
-                cursor.execute(sentenciaSQL,data)
-                self.conexion.commit()
-                self.conexion.close()
-                print("Intéprete eliminado correctamente")
-            except mysql.connector.Error as d_Error:
-                print("No se conectó", d_Error)
-
-#-------------------------------------------------------------------------------------------------------------------                    
-
-# ELIMINAR ALBUM
-
-    def EliminarAlbum(self, cod_album):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "DELETE from album WHERE cod_album = %s "
-                data =(cod_album,)
-                cursor.execute(sentenciaSQL,data)
-                self.conexion.commit()
-                self.conexion.close()
-                print("Intéprete eliminado correctamente")
-            except mysql.connector.Error as d_Error:
-                print("No se conectó", d_Error)
-
 #-------------------------------------------------------------------------------------------------------------------
 
 # INSERTAR GENERO
@@ -240,7 +185,25 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                         print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
 
-#-----------------------------------------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------------------------------------------                    
+
+# ELIMINAR GENERO
+
+    def EliminarGenero(self, id_genero):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "DELETE from genero WHERE id_genero = %s "
+                data =(id_genero,)
+                cursor.execute(sentenciaSQL,data)
+                self.conexion.commit()
+                self.conexion.close()
+                print("El genero fue eliminado correctamente")
+            except mysql.connector.Error as d_Error:
+                print("No se conectó", d_Error)
+
+#-------------------------------------------------------------------------------------------------------------------
 
 # INSERTAR ALBUM
 
@@ -271,6 +234,24 @@ class Conectar():
 
             except mysql.connector.Error as d_Error:
                                 print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
+
+#-------------------------------------------------------------------------------------------------------------------                    
+
+# ELIMINAR ALBUM
+
+    def EliminarAlbum(self, cod_album):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "DELETE from album WHERE cod_album = %s "
+                data =(cod_album,)
+                cursor.execute(sentenciaSQL,data)
+                self.conexion.commit()
+                self.conexion.close()
+                print("Albun eliminado correctamente")
+            except mysql.connector.Error as d_Error:
+                print("No se conectó", d_Error)
+
 
 # EDITAR ALBUM
 
@@ -327,8 +308,26 @@ class Conectar():
                 except mysql.connector.Error as d_Error:
                                     print("¡Ops, algo salió mal!", d_Error)
 
-
 #---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# ELIMINAR INTÉRPRETE
+
+    def EliminarInterprete(self, id_interprete):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "DELETE from interprete WHERE id_interprete = %s "
+                data =(id_interprete,)
+                cursor.execute(sentenciaSQL,data)
+                self.conexion.commit()
+                self.conexion.close()
+                print("Intéprete eliminado correctamente")
+            except mysql.connector.Error as d_Error:
+                print("No se conectó", d_Error)
+
+
+# ------------------------------------------------------------------------------------------------------------------                  
+
 
    # INSERTAR DISCOGRÁFICA
 
@@ -350,6 +349,27 @@ class Conectar():
 
                 except mysql.connector.Error as d_Error:
                                     print("¡Ops, algo salió mal!", d_Error)
+
+#-------------------------------------------------------------------------------------------------------------------
+
+
+# ELIMINAR DISCOGRAFICA
+
+    def EliminarDiscografica(self, id_discografica):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "DELETE from discografica WHERE id_discografica = %s "
+                data =(id_discografica,)
+                cursor.execute(sentenciaSQL,data)
+                self.conexion.commit()
+                self.conexion.close()
+                print("Discografica fue eliminado correctamente")
+            except mysql.connector.Error as d_Error:
+                print("No se conectó", d_Error)
+
+#-------------------------------------------------------------------------------------------------------------------
+
 
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -382,6 +402,26 @@ class Conectar():
                                     print("¡Ops, algo salió mal!", d_Error)
 
 
+#-------------------------------------------------------------------------------------------------------------------                    
+
+# ELIMINAR TEMA
+
+    def EliminarTema(self, id_tema):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "DELETE from tema WHERE id_tema = %s "
+                data =(id_tema,)
+                cursor.execute(sentenciaSQL,data)
+                self.conexion.commit()
+                self.conexion.close()
+                print("El Tema fue eliminado correctamente")
+            except mysql.connector.Error as d_Error:
+                print("No se conectó", d_Error)
+
+#-------------------------------------------------------------------------------------------------------------------
+
+
 #---------------------------------------------------------------------------------------------------------------------------------------------------------
  
  # INSERTAR FORMATO
@@ -404,6 +444,27 @@ class Conectar():
 
                 except mysql.connector.Error as d_Error:
                                     print("¡Ops, algo salió mal!", d_Error)
+
+
+#-------------------------------------------------------------------------------------------------------------------                    
+
+# ELIMINAR FORMATO
+
+    def EliminarFormato(self, id_formmato):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "DELETE from formato WHERE id_formato = %s "
+                data =(id_formmato,)
+                cursor.execute(sentenciaSQL,data)
+                self.conexion.commit()
+                self.conexion.close()
+                print("El formato fue eliminado correctamente")
+            except mysql.connector.Error as d_Error:
+                print("No se conectó", d_Error)
+
+#-------------------------------------------------------------------------------------------------------------------
+
  
 #--------------------------------------------------------------------------------------------------------------------------------------------------------- 
  
@@ -619,10 +680,10 @@ def __str__(self) -> str:
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-con = Conectar()
-# con.ListarAlbumes()
+#con = Conectar()
+#con.ListarAlbumes()
 # con.ListarInterprete()
-# con.EliminarInterprete(27)
+#con.EliminarDiscografica(8)
 # con.InsertarInterprete('Luis Alberto Spinetta', 'Argentina', '')
 
 # for interprete in con.ListarInterprete():
