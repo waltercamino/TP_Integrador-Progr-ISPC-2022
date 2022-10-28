@@ -11,14 +11,31 @@ class Conectar():
                 host = "localhost",
                 port = 3306,
                 user = "root",
-                password = "",
+                password = "Co121282*",
                 db = "disqueria"
             )
         except mysql.connector.Error as d_Error:
             print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
 
-    
 
+# TRAER UN SOLO ALBUM #
+
+    def TraerAlbum(self,cod_album):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                senteciaSQL = "SELECT * FROM album WHERE album.cod_album = "+str(cod_album)
+                cursor.execute(senteciaSQL)
+                resultados = cursor.fetchall()
+                self.conexion.close()
+                print(resultados[0])
+                return resultados[0]
+
+
+            except mysql.connector.Error as descripcionError:
+                print("¡No se conectó!",descripcionError)
+
+#------------------LISTAR-----------------------------
 # LISTAR ALBUMES #
 
     def ListarAlbumes(self):
@@ -35,9 +52,24 @@ class Conectar():
                 print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
 
 
+# LISTAR GENERO #
+
+    def ListarGenero(self):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "SELECT * from genero"
+                cursor.execute(sentenciaSQL)
+                resultados = cursor.fetchall()
+                #self.conexion.close()
+                return resultados
+            
+            except mysql.connector.Error as d_Error:
+                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
+
+
 # LISTAR POR GENERO #
 
-    
     def ListarPorGenero(self):
         if self.conexion.is_connected():
             try:
@@ -66,25 +98,9 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                 print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
 
-# TRAER UN SOLO ALBUM #
-
-    def TraerAlbum(self,cod_album):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                senteciaSQL = "SELECT * FROM album WHERE album.cod_album = "+str(cod_album)
-                cursor.execute(senteciaSQL)
-                resultados = cursor.fetchall()
-                self.conexion.close()
-                print(resultados[0])
-                return resultados[0]
-
-
-            except mysql.connector.Error as descripcionError:
-                print("¡No se conectó!",descripcionError)
-
 
 # LISTAR INTÉRPRETE #
+
 
     def ListarInterprete(self):
         if self.conexion.is_connected():
@@ -116,21 +132,6 @@ class Conectar():
                 except mysql.connector.Error as d_Error:
                     print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
 
-# LISTAR GENERO #
-
-
-    def ListarGenero(self):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "SELECT * from genero"
-                cursor.execute(sentenciaSQL)
-                resultados = cursor.fetchall()
-                #self.conexion.close()
-                return resultados
-            
-            except mysql.connector.Error as d_Error:
-                    print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
 
 # LISTAR POR DISCOGRÁFICA #
 
@@ -163,64 +164,7 @@ class Conectar():
                     print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
 
 
-# ------------------------------------------------------------------------------------------------------------------
-
-
-# INSERTAR INTÉRPRETE #
-   
-    def InsertarInterprete(self, nombre, nacionalidad, foto):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "INSERT into interprete values(null,%s,%s,%s)"
-
-                data = (nombre,nacionalidad,foto)
-
-                cursor.execute(sentenciaSQL,data)
-
-                self.conexion.commit()
-                self.conexion.close()
-                print("Intérprete insertado correctamente")
-                
-            except mysql.connector.Error as d_Error:
-                    print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
-
-#-------------------------------------------------------------------------------------------------------------------                    
-
-# ELIMINAR INTÉRPRETE
-
-    def EliminarInterprete(self, id_interprete):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "DELETE from interprete WHERE id_interprete = %s "
-                data =(id_interprete,)
-                cursor.execute(sentenciaSQL,data)
-                self.conexion.commit()
-                self.conexion.close()
-                print("Intéprete eliminado correctamente")
-            except mysql.connector.Error as d_Error:
-                print("No se conectó", d_Error)
-
-#-------------------------------------------------------------------------------------------------------------------                    
-
-# ELIMINAR ALBUM
-
-    def EliminarAlbum(self, cod_album):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "DELETE from album WHERE cod_album = %s "
-                data =(cod_album,)
-                cursor.execute(sentenciaSQL,data)
-                self.conexion.commit()
-                self.conexion.close()
-                print("Intéprete eliminado correctamente")
-            except mysql.connector.Error as d_Error:
-                print("No se conectó", d_Error)
-
-#-------------------------------------------------------------------------------------------------------------------
-
+#-------------------------INSERTAR------------------------------------------------------
 # INSERTAR GENERO
    
     def InsertarGenero(self,nombre):
@@ -240,7 +184,6 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                         print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
 
-#-----------------------------------------------------------------------------------------------------------------
 
 # INSERTAR ALBUM
 
@@ -272,39 +215,8 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                                 print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
 
-# EDITAR ALBUM
 
-    def EditarAlbum(self,album,id):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "UPDATE album SET cod_album = %s, nombre= %s, id_interprete = %s, id_genero = %s, cant_temas = %s, id_discografica = %s, id_formato = %s, fech_lanzamiento= %s, precio = %s, cantidad = %s, caratula = %s WHERE id_album ="+str(id)
-
-                data = (
-                album.getCod_album(),
-                album.getNombre(),
-                album.getId_interprete(),
-                album.getId_genero(),
-                album.getCant_temas(),
-                album.getId_discografica(),
-                album.getId_formato(),
-                album.getFec_lanzamiento(),
-                album.getPrecio(),
-                album.getCantidad(),
-                album.getCaratula())
-
-                cursor.execute(sentenciaSQL,data)
-
-                self.conexion.commit()
-                self.conexion.close()
-                print("Álbum editado correctamente")        
-
-            except mysql.connector.Error as d_Error:
-                                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
-
-#---------------------------------------------------------------------------------------------------------------------------------------------------------
-
- # INSERTAR INTÉRPRETE
+# INSERTAR INTÉRPRETE
 
     def InsertarInterprete(self,interprete):
             if self.conexion.is_connected():
@@ -328,9 +240,7 @@ class Conectar():
                                     print("¡Ops, algo salió mal!", d_Error)
 
 
-#---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-   # INSERTAR DISCOGRÁFICA
+# INSERTAR DISCOGRÁFICA
 
     def InsertarDiscografica(self,discografica):
             if self.conexion.is_connected():
@@ -351,11 +261,7 @@ class Conectar():
                 except mysql.connector.Error as d_Error:
                                     print("¡Ops, algo salió mal!", d_Error)
 
-
-#---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-   # INSERTAR TEMA
+# INSERTAR TEMA
 
     def InsertarTema(self,tema):
             if self.conexion.is_connected():
@@ -381,10 +287,7 @@ class Conectar():
                 except mysql.connector.Error as d_Error:
                                     print("¡Ops, algo salió mal!", d_Error)
 
-
-#---------------------------------------------------------------------------------------------------------------------------------------------------------
- 
- # INSERTAR FORMATO
+# INSERTAR FORMATO
 
     def InsertarFormato(self,formato):
             if self.conexion.is_connected():
@@ -404,8 +307,158 @@ class Conectar():
 
                 except mysql.connector.Error as d_Error:
                                     print("¡Ops, algo salió mal!", d_Error)
- 
-#--------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+
+#------------------------ELIMINAR------------------------------------------------------------------------                    
+# ELIMINAR INTÉRPRETE
+
+    def EliminarInterprete(self, id_interprete):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "DELETE from interprete WHERE id_interprete = %s "
+                data =(id_interprete,)
+                cursor.execute(sentenciaSQL,data)
+                self.conexion.commit()
+                self.conexion.close()
+                print("Intéprete eliminado correctamente")
+            except mysql.connector.Error as d_Error:
+                print("No se conectó", d_Error)
+
+# ELIMINAR ALBUM
+
+    def EliminarAlbum(self, cod_album):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "DELETE from album WHERE cod_album = %s "
+                data =(cod_album,)
+                cursor.execute(sentenciaSQL,data)
+                self.conexion.commit()
+                self.conexion.close()
+                print("Intéprete eliminado correctamente")
+            except mysql.connector.Error as d_Error:
+                print("No se conectó", d_Error)
+
+
+
+#-------------------------EDITAR-------------------------------------------------------------------------
+
+# EDITAR ALBUM
+
+    def EditarAlbum(self,album,id):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "UPDATE album SET cod_album = %s, nombre= %s, id_interprete = %s, id_genero = %s, cant_temas = %s, id_discografica = %s, id_formato = %s, fech_lanzamiento = %s, precio = %s, cantidad = %s, caratula = %s WHERE id_album ="+str(id)
+
+                data = (
+                album.getCod_album(),
+                album.getNombre(),
+                album.getId_interprete(),
+                album.getId_genero(),
+                album.getCant_temas(),
+                album.getId_discografica(),
+                album.getId_formato(),
+                album.getFec_lanzamiento(),
+                album.getPrecio(),
+                album.getCantidad(),
+                album.getCaratula())
+
+                cursor.execute(sentenciaSQL,data)
+
+                self.conexion.commit()
+                self.conexion.close()
+                print("Álbum editado correctamente")        
+
+            except mysql.connector.Error as d_Error:
+                                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
+
+
+#EDITAR INTERPRETE
+
+    def EditarInterprete(self,interprete, id):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "UPDATE interprete SET nombre = %s, nacionalidad = %s, foto = %s WHERE id_interprete ="+str(id) 
+
+                data = (interprete.getNombre(),
+                        interprete.getNacionalidad(),
+                        interprete.getFoto())
+
+                cursor.execute(sentenciaSQL,data)
+                
+                self.conexion.commit()
+                self.conexion.close()
+                
+                print("Interprete editado correctamente")        
+
+            except mysql.connector.Error as d_Error:
+                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
+
+#EDITAR DISCOGRAFICA
+
+    def EditarDiscografica (self,discografica, id):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "UPDATE discografica SET nombre = %s WHERE id_discografica ="+str(id) 
+
+                data = (discografica.getNombre(), )
+
+                cursor.execute(sentenciaSQL,data)
+                
+                self.conexion.commit()
+                self.conexion.close()
+                
+                print("Discografica editado correctamente")        
+
+            except mysql.connector.Error as d_Error:
+                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
+
+#EDITAR FORMATO
+
+    def EditarFormato(self,formato, id):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "UPDATE formato SET nombre = %s WHERE id_formato ="+str(id) 
+
+                data = (formato.getNombre(), )
+
+                cursor.execute(sentenciaSQL,data)
+                
+                self.conexion.commit()
+                self.conexion.close()
+                
+                print("Fromato editado correctamente")        
+
+            except mysql.connector.Error as d_Error:
+                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
+
+#EDITAR GENERO
+
+    def EditarGenero(self,genero, id):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "UPDATE genero SET nombre = %s WHERE id_genero ="+str(id) 
+
+                data = (genero.getNombre(), )
+
+                cursor.execute(sentenciaSQL,data)
+                
+                self.conexion.commit()
+                self.conexion.close()
+                
+                print("Formato editado correctamente")        
+
+            except mysql.connector.Error as d_Error:
+                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
+
+
+#---------------------CLASES----------------------------------------------------------------------------------------------------------------------------- 
  
  # CLASES
 
@@ -620,7 +673,8 @@ def __str__(self) -> str:
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 con = Conectar()
-# con.ListarAlbumes()
+#con.EditarInterprete(4, 'ariel', 'colombiana', 'hola')
+#con.ListarAlbumes()
 # con.ListarInterprete()
 # con.EliminarInterprete(27)
 # con.InsertarInterprete('Luis Alberto Spinetta', 'Argentina', '')
@@ -629,9 +683,19 @@ con = Conectar()
 #  print(interprete)
 
 
-# for album in con.ListarAlbumes():
+#for album in con.ListarInterprete():
 #  print(album)
 
+
+#idint = int(input("\nIngrese el id del Album: "))
+#nombreint = input("\nIngrese el nombre del album: ")
+#nacinalidad = input("\nNacionalidad: ")
+#foto = input("\nFoto: ")
+#nuevoint = Interprete(0, nombreint, nacinalidad, foto)
+#con.EditarInterprete(nuevoint, idint)
+
+#for album in con.ListarInterprete():
+#  print(album)
 
 # for genero in con.ListarPorGenero():
 #     print(genero)
