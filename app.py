@@ -7,6 +7,12 @@ import model
 app= Flask(__name__)
 
 @app.route('/')
+def Index():
+ 
+
+    return render_template('Albums/index.html')
+
+@app.route('/ListarPorAlbum')
 def list():
     con = model.Conectar()
     listado = con.ListarAlbumes()
@@ -26,6 +32,10 @@ def ListNombre():
     listado = con.ListarPorNombre()
     
     return render_template('Albums/list.html',listado=listado)    
+
+@app.route('/Contacto')
+def Contacto():
+ return render_template('Albums/contacto.html')    
 
 @app.route('/destroy/<int:cod_album>')
 def destroy(cod_album):
