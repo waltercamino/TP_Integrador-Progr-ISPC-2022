@@ -721,11 +721,11 @@ def __str__(self) -> str:
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-con = Conectar()
+#con = Conectar()
 #print(con.ListarAlbumes())
 #con.EditarDiscografica ("discos del norte",id=2)
 #con.ListarFormato()
-con.EliminarDiscografica(8)
+#con.EliminarDiscografica(8)
 # con.InsertarInterprete('Luis Alberto Spinetta', 'Argentina', '')
 
 
