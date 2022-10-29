@@ -123,6 +123,8 @@ def saveEdit(id):
 
 @app.route('/search/<string:page>', methods=["GET", "POST"])
 def buscarAlbum(page):
+    newPage = page
+
     var = request.form['buscar']
 
     con = model.Conectar()
@@ -133,7 +135,7 @@ def buscarAlbum(page):
         if(var.lower().replace(" ", "") in item[1].lower().replace(" ", "")):
             items.append(item)
 
-    return render_template(page+'/list.html',listado=items,var = var)
+    return render_template(page+'/list.html',listado=items,var = var,page=newPage)
 
 if __name__ == '__main__':
     app.run(debug=True)
