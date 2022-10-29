@@ -1,0 +1,23 @@
+.col-2 {
+ padding: 10px;
+
+}
+
+
+
+footer{
+    text-align: center;
+    background: url(../static/img/bg.jpg);
+    padding:40px;
+}
+
+.logo-footer{
+    width: 5rem;
+    text-align: center;
+}
+
+.copyright{
+    color:#FFFFFF;
+    font-size: 13px;
+    margin:20px;
+}

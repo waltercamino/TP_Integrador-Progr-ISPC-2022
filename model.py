@@ -3,15 +3,15 @@ import mysql.connector
 
 # CONEXION A BASE DE DATOS #
 
-class Conectar(): 
-    
-    def __init__(self) -> None: 
+class Conectar():
+
+    def __init__(self) -> None:
         try:
-          self.conexion = mysql.connector.connect(
-                host = "localhost",
+            self.conexion = mysql.connector.connect(
+                host = 'localhost',
                 port = 3306,
                 user = "root",
-                password = "Co121282*",
+                password = "",
                 db = "disqueria"
             )
         except mysql.connector.Error as d_Error:
@@ -101,7 +101,6 @@ class Conectar():
 
 # LISTAR INTÉRPRETE #
 
-
     def ListarInterprete(self):
         if self.conexion.is_connected():
             try:
@@ -117,7 +116,6 @@ class Conectar():
 
 
 # LISTAR TEMA #
-
 
     def ListarTema(self):
             if self.conexion.is_connected():
@@ -148,6 +146,7 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                     print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
 
+
 # LISTAR POR FORMATO #
 
     def ListarFormato(self):
@@ -164,7 +163,28 @@ class Conectar():
                     print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
 
 
-#-------------------------INSERTAR------------------------------------------------------
+# ---------------------------------INSERTAR---------------------------------------------------------------------------------
+
+# INSERTAR INTÉRPRETE #
+   
+    def InsertarInterprete(self, nombre, nacionalidad, foto):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "INSERT into interprete values(null,%s,%s,%s)"
+
+                data = (nombre,nacionalidad,foto)
+
+                cursor.execute(sentenciaSQL,data)
+
+                self.conexion.commit()
+                self.conexion.close()
+                print("Intérprete insertado correctamente")
+                
+            except mysql.connector.Error as d_Error:
+                    print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
+     
+
 # INSERTAR GENERO
    
     def InsertarGenero(self,nombre):
@@ -187,108 +207,6 @@ class Conectar():
 
 # INSERTAR ALBUM
 
-    def InsertarAlbum(self,album):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "insert into album values (null,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-
-                data = (
-                album.getCod_album(),
-                album.getNombre(),
-                album.getId_interprete(),
-                album.getId_genero(),
-                album.getCant_temas(),
-                album.getId_discografica(),
-                album.getId_formato(),
-                album.getFec_lanzamiento(),
-                album.getPrecio(),
-                album.getCantidad(),
-                album.getCaratula())
-
-                cursor.execute(sentenciaSQL,data)
-
-                self.conexion.commit()
-                self.conexion.close()
-                print("Álbum insertado correctamente")        
-
-            except mysql.connector.Error as d_Error:
-                                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
-
-
-# INSERTAR INTÉRPRETE
-
-    def InsertarInterprete(self,interprete):
-            if self.conexion.is_connected():
-                try:
-                    cursor = self.conexion.cursor()
-                    sentenciaSQL = "insert into interprete values (null,%s,%s,%s);"
-
-                    data = (
-                    interprete.getNombre(),
-                    interprete.getNacionalidad(),
-                    interprete.getFoto()
-                    )
-
-                    cursor.execute(sentenciaSQL,data)
-
-                    self.conexion.commit()
-                    self.conexion.close()
-                    print("Intérprete insertado correctamente")        
-
-                except mysql.connector.Error as d_Error:
-                                    print("¡Ops, algo salió mal!", d_Error)
-
-
-# INSERTAR DISCOGRÁFICA
-
-    def InsertarDiscografica(self,discografica):
-            if self.conexion.is_connected():
-                try:
-                    cursor = self.conexion.cursor()
-                    sentenciaSQL = "insert into discografica values (null,%s);"
-
-                    data = (
-                    discografica.getNombre(),
-                    )
-
-                    cursor.execute(sentenciaSQL,data)
-
-                    self.conexion.commit()
-                    self.conexion.close()
-                    print("Discográfica insertada correctamente")        
-
-                except mysql.connector.Error as d_Error:
-                                    print("¡Ops, algo salió mal!", d_Error)
-
-# INSERTAR TEMA
-
-    def InsertarTema(self,tema):
-            if self.conexion.is_connected():
-                try:
-                    cursor = self.conexion.cursor()
-                    sentenciaSQL = "insert into tema values (null,%s,%s,%s,%s,%s,%s);"
-
-                    data = (
-                    tema.getTitulo(),
-                    tema.getDuracion(),
-                    tema.getAutor(),
-                    tema.getCompositor(),
-                    tema.getId_album(),
-                    tema.getId_interprete()
-                    )        
-
-                    cursor.execute(sentenciaSQL,data)
-
-                    self.conexion.commit()
-                    self.conexion.close()
-                    print("Tema insertado correctamente")        
-
-                except mysql.connector.Error as d_Error:
-                                    print("¡Ops, algo salió mal!", d_Error)
-
-# INSERTAR FORMATO
-
     def InsertarFormato(self,formato):
             if self.conexion.is_connected():
                 try:
@@ -309,7 +227,29 @@ class Conectar():
                                     print("¡Ops, algo salió mal!", d_Error)
 
 
+# INSERTAR FORMATO
+
+    def EditarGenero(self,genero, id):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "UPDATE genero SET nombre = %s WHERE id_genero ="+str(id) 
+
+                data = (genero.getNombre(), )
+
+                cursor.execute(sentenciaSQL,data)
+                
+                self.conexion.commit()
+                self.conexion.close()
+                
+                print("Formato editado correctamente")        
+
+            except mysql.connector.Error as d_Error:
+                print("¡Ops, algo salió mal!", d_Error)
+
+
 #------------------------ELIMINAR------------------------------------------------------------------------                    
+
 # ELIMINAR INTÉRPRETE
 
     def EliminarInterprete(self, id_interprete):
@@ -395,7 +335,8 @@ class Conectar():
                 print("Interprete editado correctamente")        
 
             except mysql.connector.Error as d_Error:
-                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
+                print("¡Ops, algo salió mal!", d_Error)
+
 
 #EDITAR DISCOGRAFICA
 
@@ -415,7 +356,8 @@ class Conectar():
                 print("Discografica editado correctamente")        
 
             except mysql.connector.Error as d_Error:
-                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
+                print("¡Ops, algo salió mal!", d_Error)
+
 
 #EDITAR FORMATO
 
@@ -435,32 +377,12 @@ class Conectar():
                 print("Fromato editado correctamente")        
 
             except mysql.connector.Error as d_Error:
-                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
-
-#EDITAR GENERO
-
-    def EditarGenero(self,genero, id):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "UPDATE genero SET nombre = %s WHERE id_genero ="+str(id) 
-
-                data = (genero.getNombre(), )
-
-                cursor.execute(sentenciaSQL,data)
-                
-                self.conexion.commit()
-                self.conexion.close()
-                
-                print("Formato editado correctamente")        
-
-            except mysql.connector.Error as d_Error:
-                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
+                print("¡Ops, algo salió mal!", d_Error)
 
 
-#---------------------CLASES----------------------------------------------------------------------------------------------------------------------------- 
+#---------------------------------------------------------------------------------------------------------------------------------------------------------
  
- # CLASES
+# CLASES
 
 class Interprete():     
 
@@ -673,10 +595,9 @@ def __str__(self) -> str:
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 con = Conectar()
-#con.EditarInterprete(4, 'ariel', 'colombiana', 'hola')
-#con.ListarAlbumes()
+# con.ListarAlbumes()
 # con.ListarInterprete()
-# con.EliminarInterprete(27)
+#con.EliminarDiscografica(8)
 # con.InsertarInterprete('Luis Alberto Spinetta', 'Argentina', '')
 
 # for interprete in con.ListarInterprete():

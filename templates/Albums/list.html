@@ -1,33 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>inicio</title>
-</head>
-<body class="bg-dark">
-    <div class="card ">
-        
-        <div class="card-header bg-secondary">
-            
-            <form action="/search" method="post" enctype="multipart/form-data" class="row">
-                <div class="col-3">
-                    <button><a href="/">Home</a></button>
-                </div>
-                <div class="col-4">
-                <div class="form-group  mb-2">
-                    <label for="buscar" class="sr-only">Buscar</label>
-                    <input type="text" class="form-control" name="buscar" id="buscar" value="{{var}}" placeholder="Buscar">
-                    
-                </div>
-                  
-                </div>
-                <div class="col-3"><input type="submit" value="Q" class="btn-dark btn"></div>
-            </form>
-        </div>
+{% extends '/Albums/layout.html'%}
 
-    </div>
+
+  {% block body %}
+
+                  
 
     <div class="mt-3 container align-center">
         <div class="container fluid bg-light row">
@@ -35,24 +11,24 @@
                 <h2>Ordenar por:</h2>
             </div>
             <div class="col-6">
-                <a href="/ListarPorNombre" class="mx-2">Nombre de Album</a>
-                <a href="/">Artista</a class="mx-2">
-                <a href="/ListarPorGenero" class="mx-2">Genero</a>
+             <button type="button" class="btn btn-outline-info"><a href="/ListarPorNombre" class="mx-3">Nombre de Album</a></button>
+             <button type="button" class="btn btn-outline-info"><a href="/ListarPorAlbum" class="mx-3">Artista</a></button>
+             <button type="button" class="btn btn-outline-info"><a href="/ListarPorGenero" class="mx-3">Genero</a></button>
             </div>
             <div class="col-2">
-                <a href="/create" class="mx-2">Crear Nuevo</a>
+            <button type="button" class="btn btn-outline-info"><a href="/create" class="mx-3">Crear Nuevo</a></button>
             </div>
             
             
         </div>
         
-    
+         
             {% for item in listado %}
-            <div class="list-group-item list-group-item-action d-flex gap-3 py-3 row">
-                <div class="col-2">
+            <div class="list-group list-group-horizontal-md align-center">
+                <div class="col-2"><span></span>
                     <img class="img-fluid" src="{{item[8]}}" alt="{{item[8]}}">
                 </div>
-                <div class="col-2">
+                <div class="col-2" class="row justify-content-center align-items-center minh-100">
                     <h4>{{item[1]}}</h4>
                     <p>{{item[0]}}</p>
                 </div>
@@ -61,26 +37,24 @@
                         <li>{{item[2]}}</li>
                     <li>{{item[3]}}</li>
                     <li>{{item[4]}}</li>
-                    </ul>
-                    
+                    </ul>    
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <ul>
                         <li>Precio: ${{item[5]}}</li>
                         <li>Cantidad: {{item[6]}}</li>
                         <li>Formato: {{item[7]}}</li>
                     </ul>
                 </div>
-                <div class="col-1">
-                    <a href="/edit/{{item[0]}}">editar</a>
+                <div class="col-2">
+                    <button type="button" class="btn btn-outline-info"><a href="/edit/{{item[0]}}">EDITAR</a></button>
                     <br>
-                    <a href="/destroy/{{item[0]}}">eliminar</a>
+                    <button type="button" class="btn btn-outline-danger"><a href="/destroy/{{item[0]}}">ELIMINAR</a></button>
                 </div>
                 
-            </div>
-                 
+            </div>       
             {% endfor %}
         </div>
     </div>
-</body>
-</html>
+
+    {% endblock %}

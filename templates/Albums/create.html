@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>Crear Nuevo Album</title>
-</head>
-<body>
+{% extends '/Albums/layout.html'%}
+  {% block body %}
     <div class="container">
-        <a href="/">Inicio</a>
         <form method="post" action="/save-new" enctype="multipart/form-data" class="form-control">
         Codigo de album:
         <input type="text" name="codAlbum" id="txtCodAlbum " class="form-control" ><br>
@@ -48,10 +40,8 @@
         <input type="text" name="cantidad" id="cantidad " class="form-control"><br>
         Caratula:
         <input type="text" name="caratula" id="caratula " class="form-control"><br>
-        <input type="submit" value="Guardar Nuevo" class="form-control">
+        <input class="btn btn-primary" type="submit" value="Guardar Nuevo" class="form-control">
         
     </form>
     </div>
-    
-</body>
-</html>
+{% endblock %}
