@@ -380,6 +380,47 @@ class Conectar():
                 print("¡Ops, algo salió mal!", d_Error)
 
 
+#EDITAR GENERO
+
+    def EditarGenero(self,genero, id):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "UPDATE genero SET nombre = %s WHERE id_genero ="+str(id) 
+
+                data = (genero.getNombre(), )
+
+                cursor.execute(sentenciaSQL,data)
+                
+                self.conexion.commit()
+                self.conexion.close()
+                
+                print("Genero editado correctamente")        
+
+            except mysql.connector.Error as d_Error:
+                print("¡Ops, algo salió mal!", d_Error)
+
+
+#EDITAR TEMA
+
+    def EditarTema(self,tema, id):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "UPDATE tema SET nombre = %s WHERE id_tema ="+str(id) 
+
+                data = (tema.getNombre(), )
+
+                cursor.execute(sentenciaSQL,data)
+                
+                self.conexion.commit()
+                self.conexion.close()
+                
+                print("Tema editado correctamente")        
+
+            except mysql.connector.Error as d_Error:
+                print("¡Ops, algo salió mal!", d_Error)
+
 #---------------------------------------------------------------------------------------------------------------------------------------------------------
  
 # CLASES
