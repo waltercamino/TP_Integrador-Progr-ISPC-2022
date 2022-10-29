@@ -2,8 +2,20 @@
  padding: 10px;
 
 }
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #0a0a0a;
+}
 
+.btn{
+    margin: 10px;
+}
 
+.list-group {
+    display: flex;
+    align-items: center;
+}
 
 footer{
     text-align: center;
