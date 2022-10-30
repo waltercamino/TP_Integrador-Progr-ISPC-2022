@@ -11,8 +11,8 @@
                 <h2>Ordenar por:</h2>
             </div>
             <div class="col-6">
-             <button type="button" class="btn btn-outline-info"><a href="/ListarPorNombre" class="mx-3">Nombre de Album</a></button>
-             <button type="button" class="btn btn-outline-info"><a href="/ListarPorAlbum" class="mx-3">Artista</a></button>
+             <button type="button" class="btn btn-outline-info"><a href="/ListarPorAlbum" class="mx-3">Nombre de Album</a></button>
+             <button type="button" class="btn btn-outline-info"><a href="/ListarInterprete" class="mx-3">Artista</a></button>
              <button type="button" class="btn btn-outline-info"><a href="/ListarPorGenero" class="mx-3">Genero</a></button>
             </div>
             <div class="col-2">
@@ -49,7 +49,7 @@
                 <div class="col-2">
                     <button type="button" class="btn btn-outline-info"><a href="/edit/{{item[0]}}">EDITAR</a></button>
                     <br>
-                    <button type="button" class="btn btn-outline-danger"><a href="/destroy/{{item[0]}}">ELIMINAR</a></button>
+                    <button type="button" class="btn btn-outline-danger btn-delete"><a href="/destroy/{{item[0]}}">ELIMINAR</a></button>
                 </div>
                 
             </div>       
