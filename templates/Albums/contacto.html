@@ -1,12 +1,50 @@
 {% extends '/Albums/layout.html'%}
   {% block body %}
-  <div class="mb-3">
-    <label for="FormControlInput" class="form-label">Correo electrónico</label>
-    <input type="email" class="form-control" id="FormControlInput1" placeholder="mail@mail.com">
+  <div class="container contacto" class="justify-content-center">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form class="form-horizontal rounded needs-validation" novalidate>
+                    <fieldset>
+                        <legend class="text-left header-form"><strong> Formulario de Contacto</strong></legend>
+                    </fieldset>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="bi bi-person-fill"></i></span>
+                            <div class="col-md-8">
+                                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control" required>
+                                <!-- Mensajes para validación  -->
+                                <div class="invalid-tooltip">Por favor ingrese su nombre.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="bi bi-envelope"></i></span>
+                            <div class="col-md-8">
+                                <input id="email" name="email" type="email" placeholder="Correo electrónico" class="form-control"required>
+                                <div class="invalid-tooltip">Por favor ingrese su email (ejemplo@mail.com).</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="bi bi-pencil-square"></i></span>
+                            <div class="col-md-8">
+                                <textarea class="form-control" id="mensaje" name="mensaje" placeholder="Escriba aquí su consulta. Nos contactaremos a la brevedad." rows="7"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 text-left">
+                              <button class="btn btn-primary btn-lg" type="submit"  type="submit">Enviar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+          </div>
+        </div>     
+  <div class="content-center">
+    <h3 class="pa">Podes hacer tu pago online a través de:</h3>
+    <img src="../../static/img/mercadopago.jpg">
+    <h3>Estamos ubicados en:</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.2520647002125!2d-64.19285248485217!3d-31.40718058140719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432998fa4b4357b%3A0xcf43bc8d04170a61!2sISPC%20Instituto%20Superior%20Polit%C3%A9cnico%20C%C3%B3rdoba!5e0!3m2!1ses-419!2sar!4v1667092527782!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
-  <div class="mb-3">
-    <label for="FormControlTextarea1" class="form-label">Mensaje</label>
-    <textarea class="form-control" id="FormControlTextarea1" rows="3"></textarea>
-  </div>
+</div>
 
   {% endblock %}
