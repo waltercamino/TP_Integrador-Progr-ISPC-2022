@@ -1,10 +1,10 @@
-{% extends '/Albums/layout.html'%}
+{% extends '/layout.html'%}
   {% block body %}
     
     
     <div class="container">
         <a href="/">Inicio</a>
-        <form method="post" action="/save-edit/{{album[0]}}" enctype="multipart/form-data" class="form-control">
+        <form method="post" action="/Album/save-edit/{{album[0]}}" enctype="multipart/form-data" class="form-control">
         Codigo de album:
         <input type="text" name="codAlbum" id="CodAlbum " class="form-control" value="{{album[1]}}"><br>
         Nombre:

@@ -1,0 +1,15 @@
+{% extends '/layout.html'%}
+  {% block body %}
+    <div class="container">
+        <form method="post" action="/Interprete/save-new" enctype="multipart/form-data" class="form-control">
+        Nombre:
+        <input type="text" name="nombre" id="nombre" class="form-control"><br>
+        Nacionalidad:
+        <input type="text" name="nacionalidad" id="nacionalidad " class="form-control"><br>
+        Foto:
+        <input type="text" name="foto" id="foto " class="form-control"><br>
+        <input class="btn btn-primary" type="submit" value="Guardar Nuevo" class="form-control">
+        
+        </form>
+    </div>
+{% endblock %}

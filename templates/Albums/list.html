@@ -1,5 +1,4 @@
-{% extends '/Albums/layout.html'%}
-
+{% extends '/layout.html'%}
 
   {% block body %}
 
@@ -11,12 +10,12 @@
                 <h2>Ordenar por:</h2>
             </div>
             <div class="col-6">
-             <button type="button" class="btn btn-outline-info"><a href="/ListarPorNombre" class="mx-3">Nombre de Album</a></button>
-             <button type="button" class="btn btn-outline-info"><a href="/ListarPorAlbum" class="mx-3">Artista</a></button>
-             <button type="button" class="btn btn-outline-info"><a href="/ListarPorGenero" class="mx-3">Genero</a></button>
+                <a href="/Album/ListarPorNombre" class="mx-3"><button type="button" class="btn btn-outline-info">Nombre de Album</button></a>
+                <a href="/Album/ListarPorAlbum" class="mx-3"><button type="button" class="btn btn-outline-info">Artista</button></a>
+                <a href="/Album/ListarPorAlbum" class="mx-3"><button type="button" class="btn btn-outline-info" >Album</button></a>
             </div>
             <div class="col-2">
-            <button type="button" class="btn btn-outline-info"><a href="/create" class="mx-3">Crear Nuevo</a></button>
+                <a href="/Album/Create" class="mx-3"><button type="button" class="btn btn-outline-info">Crear Nuevo</button></a>
             </div>
             
             
@@ -47,13 +46,19 @@
                     </ul>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-outline-info"><a href="/edit/{{item[0]}}">EDITAR</a></button>
+                    <a href="/Album/edit/{{item[0]}}"><button type="button" class="btn btn-outline-info">EDITAR</button></a>
                     <br>
-                    <button type="button" class="btn btn-outline-danger"><a href="/destroy/{{item[0]}}">ELIMINAR</a></button>
+                    <a href="/Album/destroy/{{item[0]}}"><button type="button" class="btn btn-outline-danger">ELIMINAR</button></a>
                 </div>
+                
                 
             </div>       
             {% endfor %}
+            {% if vacio %}
+                <div class="list-group list-group-horizontal-md align-center ">
+                    <h5 class="col d-flex justify-content-center mt-5 mb-5"> No se han encontrado resultados</h5>
+                </div>
+                {% endif %}
         </div>
     </div>
 

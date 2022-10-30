@@ -28,13 +28,24 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">GENERO</a>
+                <a class="nav-link" href="/Genero/Listar">GENEROS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href='/ListarPorAlbum'>ALBUM</a>
+                <a class="nav-link" href='/Album/ListarPorAlbum'>ALBUMES</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">ARTISTA</a>
+                <a class="nav-link" href="/Interprete/Listar">ARTISTAS</a>
+              </li>
+              <!-- Temas aun no esta implementado
+              <li class="nav-item">
+                <a class="nav-link" href="/Tema/Listar">TEMAS</a>
+              </li>
+              -->
+              <li class="nav-item">
+                <a class="nav-link" href="/Discografica/Listar">DISCOGRAFICAS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Formato/Listar">FORMATOS</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/Contacto">CONTACTO</a>
@@ -43,7 +54,7 @@
             </ul>
             <form class="d-flex" action="/search/{{page}}" method="post" enctype="multipart/form-data">
               <input class="form-control me-sm-2" type="text"  name="buscar" id="buscar" value="{{var}}" placeholder="Buscar">
-              <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+              <button class="btn btn-dark my-2 my-sm-0" type="submit">IR</button>
             </form>
 
           </div>
