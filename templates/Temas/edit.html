@@ -1,0 +1,42 @@
+{% extends '/layout.html'%}
+  {% block body %}
+    
+    
+    <div class="container">
+        <a href="/">Inicio</a>
+        <form method="post" action="/Tema/save-edit/{{tema[0]}}" enctype="multipart/form-data" class="form-control">
+            
+            titulo:
+            <input type="text" name="titulo" id="titulo" class="form-control" value="{{tema[1]}}"><br>
+            duracion:
+            <input type="time" name="duracion" id="duracion" class="form-control" step="1" value="0{{tema[2]}}"><br>
+            autor:
+            <input type="text" name="autor" id="autor" class="form-control" value="{{tema[3]}}"><br>
+            compositor:
+            <input type="text" name="compositor" id="compositor" class="form-control" value="{{tema[4]}}"><br>
+            Album:
+            <select name="album" id="album" class="form-control">
+                {% for album in albums %}
+                {% if album[0] == tema[5]  %}
+                <option value="{{album[0]}}" selected>{{album[2]}}</option>
+                {% else %}
+                <option value="{{album[0]}}">{{album[2]}}</option>
+                {% endif %}
+                {% endfor %}
+            </select><br>
+            Interprete:
+            <select name="interprete" id="interprete" class="form-control">
+                {% for inter in interpretes %}
+                {% if inter[0] == tema[6]  %}
+                <option value="{{inter[0]}}" selected>{{inter[1]}}</option>
+                {% else %}
+                <option value="{{inter[0]}}">{{inter[1]}}</option>
+                {% endif %}
+                {% endfor %}
+            </select><br>
+        <input type="submit" value="Guardar Cambios" class="form-control">
+        
+    </form>
+    </div>
+    
+{% endblock %}

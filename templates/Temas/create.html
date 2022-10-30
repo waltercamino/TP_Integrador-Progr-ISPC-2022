@@ -1,0 +1,32 @@
+{% extends '/layout.html'%}
+  {% block body %}
+    <div class="container">
+        <form method="post" action="/Tema/save-new" enctype="multipart/form-data" class="form-control">
+        
+        titulo:
+        <input type="text" name="titulo" id="titulo" class="form-control"><br>
+        duracion:
+        <input type="time" name="duracion" id="duracion" class="form-control" step="1"><br>
+        autor:
+        <input type="text" name="autor" id="autor" class="form-control"><br>
+        compositor:
+        <input type="text" name="compositor" id="compositor" class="form-control"><br>
+        Album:
+        <select name="album" id="album" class="form-control">
+            {% for album in albums %}
+            <option value="{{album[0]}}">{{album[2]}}</option>
+            {% endfor %}
+        </select><br>
+        Interprete:
+        <select name="interprete" id="interprete" class="form-control">
+            {% for inter in interpretes %}
+            <option value="{{inter[0]}}" >{{inter[1]}}</option>
+            {% endfor %}
+        </select><br>
+
+        
+        <input class="btn btn-primary" type="submit" value="Guardar Nuevo" class="form-control">
+        
+    </form>
+    </div>
+{% endblock %}

@@ -361,6 +361,82 @@ def saveEditFormato(id):
     con.EditarFormato(EditFormato,id)
     return redirect('/Formato/Listar')
 
+#------------------TEMA------------------------------------------------------------------------
+
+@app.route('/Tema/Listar')
+def ListTemaNombre():
+    con = model.Conectar()
+    page = "Temas"
+    listado = con.ListarTema()
+    
+    return render_template('Temas/list.html',listado=listado,page=page)    
+
+@app.route('/Tema/destroy/<int:id>')
+def destroyTema(id):
+    con = model.Conectar()
+    con.EliminarTema(id)
+    return redirect('/Tema/Listar')
+
+@app.route('/Tema/Create')
+def createTema():
+    page = "Temas"
+    i = model.Conectar()
+    a = model.Conectar()
+
+    interpretes = i.ListarInterprete()
+    albums = a.ListarAlbumesCompleto()
+
+
+    return render_template('Temas/create.html', interpretes=interpretes,albums = albums, page=page)
+
+@app.route('/Tema/save-new', methods=["GET", "POST"])
+def saveNewTema():
+
+    con = model.Conectar()
+
+    titulo = request.form['titulo']
+    duracion = request.form['duracion']
+    autor = request.form['autor']
+    compositor = request.form['compositor']
+    album = request.form['album']
+    interprete = request.form['interprete']
+
+
+    nuevoTema = model.Tema(0,titulo,duracion,autor,compositor,album,interprete)
+    con.InsertarTema(nuevoTema)
+    return redirect('/Tema/Listar')
+
+@app.route('/Tema/edit/<int:id>')
+def editTema(id):
+    page = "Temas"
+
+    i = model.Conectar()
+    a = model.Conectar()
+    t = model.Conectar()
+
+    interpretes = i.ListarInterprete()
+    albums = a.ListarAlbumesCompleto()
+    tema = t.TraerTema(id)
+   
+
+    return render_template('Temas/edit.html', interpretes=interpretes,albums = albums, tema = tema, page=page)
+
+@app.route('/Tema/save-edit/<int:id>', methods=["GET", "POST"])
+def saveEditTema(id):
+    con = model.Conectar()
+
+    titulo = request.form['titulo']
+    duracion = request.form['duracion']
+    autor = request.form['autor']
+    compositor = request.form['compositor']
+    album = request.form['album']
+    interprete = request.form['interprete']
+
+
+    editTema = model.Tema(0,titulo,duracion,autor,compositor,album,interprete)
+    con.EditarTema(editTema,id)
+    return redirect('/Tema/Listar')
+
 
 #------------------BUSCAR----------------------------------------------------------------------
 

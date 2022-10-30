@@ -100,7 +100,7 @@ class Conectar():
             except mysql.connector.Error as descripcionError:
                 print("¡No se conectó!",descripcionError)
 
-# TRAER UNA SOLA FORMATO #
+# TRAER UN SOLO FORMATO #
 
     def TraerFormato(self,id):
         if self.conexion.is_connected():
@@ -117,6 +117,21 @@ class Conectar():
                 print("¡No se conectó!",descripcionError)
 
 #------------------LISTAR------------------------------------------------------------------------------------------------
+
+
+    def ListarAlbumesCompleto(self):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                senteciaSQL = "SELECT * FROM album"
+                cursor.execute(senteciaSQL)
+                resultados = cursor.fetchall()
+                self.conexion.close()
+                return resultados
+
+            except mysql.connector.Error as d_Error:
+                print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
+
 # LISTAR ALBUMES 
 
     def ListarAlbumes(self):
@@ -255,6 +270,44 @@ class Conectar():
                 sentenciaSQL = "INSERT into interprete values(null,%s,%s,%s)"
 
                 data = (interprete.getNombre(),interprete.getNacionalidad(),interprete.getFoto())
+
+                cursor.execute(sentenciaSQL,data)
+
+                self.conexion.commit()
+                self.conexion.close()
+                print("Intérprete insertado correctamente")
+                
+            except mysql.connector.Error as d_Error:
+                    print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
+
+# INSERTAR INTÉRPRETE #
+   
+    def InsertarInterprete(self, interprete):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "INSERT into interprete values(null,%s,%s,%s)"
+
+                data = (interprete.getNombre(),interprete.getNacionalidad(),interprete.getFoto())
+
+                cursor.execute(sentenciaSQL,data)
+
+                self.conexion.commit()
+                self.conexion.close()
+                print("Intérprete insertado correctamente")
+                
+            except mysql.connector.Error as d_Error:
+                    print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
+
+# INSERTAR TEMA #
+   
+    def InsertarTema(self, tema):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "INSERT into tema values(null,%s,%s,%s,%s,%s,%s)"
+
+                data = (tema.getTitulo(),tema.getDuracion(),tema.getAutor(),tema.getCompositor(),tema.getId_album(),tema.getId_interprete())
 
                 cursor.execute(sentenciaSQL,data)
 
@@ -447,6 +500,21 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                 print("No se conectó", d_Error)
 
+# ELIMINAR TEMA
+
+    def EliminarTema(self, id_tema):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sentenciaSQL = "DELETE from tema WHERE id_tema = %s "
+                data =(id_tema,)
+                cursor.execute(sentenciaSQL,data)
+                self.conexion.commit()
+                self.conexion.close()
+                print("tema fue eliminado correctamente")
+            except mysql.connector.Error as d_Error:
+                print("No se conectó", d_Error)
+
 
 #-------------------------EDITAR-------------------------------------------------------------------------
 
@@ -577,9 +645,9 @@ class Conectar():
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sentenciaSQL = "UPDATE tema SET nombre = %s WHERE id_tema ="+str(id) 
+                sentenciaSQL = "UPDATE tema SET titulo = %s, duracion = %s, autor = %s, compositor = %s, id_album  = %s, id_interprete  = %s WHERE id_tema ="+str(id) 
 
-                data = (tema.getNombre(), )
+                data = (tema.getTitulo(),tema.getDuracion(),tema.getAutor(),tema.getCompositor(),tema.getId_album(),tema.getId_interprete())
 
                 cursor.execute(sentenciaSQL,data)
                 
