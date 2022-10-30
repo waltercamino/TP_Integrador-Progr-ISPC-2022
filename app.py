@@ -35,11 +35,11 @@ def ListNombre():
     
     return render_template('Albums/list.html',listado=listado,page=page)    
    
-@app.route('/ListarInterprete')
-def ListNombre():
+@app.route('/ListarPorInterprete')
+def ListInterprete():
     con = model.Conectar()
     page = "Albums"
-    listado = con.ListarInterprete()
+    listado = con.ListarPorInterprete()
     
     return render_template('Albums/list.html',listado=listado,page=page)  
 
