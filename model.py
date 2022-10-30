@@ -115,17 +115,17 @@ class Conectar():
                     print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
                     
  # LISTAR POR INTERPRETE
-   def ListarPorInterprete(self):     
-       if self.conexion.is_connected():
-           try:
+    def ListarPorInterprete(self):     
+        if self.conexion.is_connected():
+            try:
                cursor = self.conexion.cursor()
-               sentenciaSQL = "SELECT cod_album, album.nombre, interprete.nombre, genero.nombre, discografica.nombre, precio, cantidad, formato.tipo, caratula FROM album, interprete, discografica,formato,genero WHERE album.id_interprete = interprete.id_interprete AND album.id_discografica = discografica.id_discografica AND album.id_formato = formato.id_formato AND album.id_genero = genero.id_genero ORDER By album.nombre asc"
+               sentenciaSQL = "SELECT cod_album, album.nombre, interprete.nombre, genero.nombre, discografica.nombre, precio, cantidad, formato.tipo, caratula FROM album, interprete, discografica,formato,genero WHERE album.id_interprete = interprete.id_interprete AND album.id_discografica = discografica.id_discografica AND album.id_formato = formato.id_formato AND album.id_genero = genero.id_genero ORDER By interprete.nombre asc"
                cursor.execute(sentenciaSQL)
                resultados = cursor.fetchall()
                # self.conexion.close()
                return resultados
 
-           except mysql.connector.Error as d_Error:
+            except mysql.connector.Error as d_Error:
                    print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)                   
 
 
