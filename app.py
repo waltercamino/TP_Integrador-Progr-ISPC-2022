@@ -34,6 +34,14 @@ def ListNombre():
     listado = con.ListarPorNombre()
     
     return render_template('Albums/list.html',listado=listado,page=page)    
+   
+@app.route('/ListarInterprete')
+def ListNombre():
+    con = model.Conectar()
+    page = "Albums"
+    listado = con.ListarInterprete()
+    
+    return render_template('Albums/list.html',listado=listado,page=page)  
 
 @app.route('/Contacto')
 def Contacto():
