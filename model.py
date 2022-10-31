@@ -280,24 +280,8 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                     print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
 
-# INSERTAR INTÉRPRETE #
-   
-    def InsertarInterprete(self, interprete):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "INSERT into interprete values(null,%s,%s,%s)"
 
-                data = (interprete.getNombre(),interprete.getNacionalidad(),interprete.getFoto())
-
-                cursor.execute(sentenciaSQL,data)
-
-                self.conexion.commit()
-                self.conexion.close()
-                print("Intérprete insertado correctamente")
-                
-            except mysql.connector.Error as d_Error:
-                    print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
+# -----------------------------------------------------------------------------------------------------------------
 
 # INSERTAR TEMA #
    
@@ -480,7 +464,6 @@ class Conectar():
                 print("El formato fue eliminado correctamente")
             except mysql.connector.Error as d_Error:
                 print("No se conectó", d_Error)
-
 
 
 #-------------------------------------------------------------------------------------------------------------------
