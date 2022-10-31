@@ -5,14 +5,14 @@
                   
 
     <div class="mt-3 container align-center">
-        <div class="container fluid bg-light row">
+        <div class=" bg-light row rounded border">
             <div class="col-3">
                 <h2>Ordenar por:</h2>
             </div>
             <div class="col-6">
                 <a href="/Album/ListarPorNombre" class="mx-3"><button type="button" class="btn btn-outline-info">Nombre de Album</button></a>
-                <a href="/Album/ListarPorAlbum" class="mx-3"><button type="button" class="btn btn-outline-info">Artista</button></a>
-                <a href="/Album/ListarPorAlbum" class="mx-3"><button type="button" class="btn btn-outline-info" >Album</button></a>
+                <a href="/Album/ListarPorArtista" class="mx-3"><button type="button" class="btn btn-outline-info">Artista</button></a>
+                <a href="/Album/ListarPorGenero" class="mx-3"><button type="button" class="btn btn-outline-info" >Genero</button></a>
             </div>
             <div class="col-2">
                 <a href="/Album/Create" class="mx-3"><button type="button" class="btn btn-outline-info">Crear Nuevo</button></a>
@@ -23,32 +23,32 @@
         
          
             {% for item in listado %}
-            <div class="list-group list-group-horizontal-md align-center">
+            <div class="list-group list-group-horizontal-md align-center rounded border my-2 bg-dark">
                 <div class="col-2"><span></span>
-                    <img class="img-fluid" src="{{item[8]}}" alt="{{item[8]}}">
+                    <img class="img-fluid border-light" src="{{item[8]}}" alt="{{item[8]}}">
                 </div>
                 <div class="col-2" class="row justify-content-center align-items-center minh-100">
-                    <h4>{{item[1]}}</h4>
-                    <p>{{item[0]}}</p>
+                    <h4 class="text-light">{{item[1]}}</h4>
+                    <p class="text-light">{{item[0]}}</p>
                 </div>
                 <div class="col-3">
                     <ul>
-                        <li>{{item[2]}}</li>
-                    <li>{{item[3]}}</li>
-                    <li>{{item[4]}}</li>
+                        <li class="text-light">{{item[2]}}</li>
+                        <li class="text-light">{{item[3]}}</li>
+                        <li class="text-light">{{item[4]}}</li>
                     </ul>    
                 </div>
                 <div class="col-3">
                     <ul>
-                        <li>Precio: ${{item[5]}}</li>
-                        <li>Cantidad: {{item[6]}}</li>
-                        <li>Formato: {{item[7]}}</li>
+                        <li class="text-light">Precio: ${{item[5]}}</li>
+                        <li class="text-light">Cantidad: {{item[6]}}</li>
+                        <li class="text-light">Formato: {{item[7]}}</li>
                     </ul>
                 </div>
                 <div class="col-2">
-                    <a href="/Album/edit/{{item[0]}}"><button type="button" class="btn btn-outline-info">EDITAR</button></a>
+                    <a href="/Album/edit/{{item[0]}}"><button type="button" class="btn text-light btn-info">EDITAR</button></a>
                     <br>
-                    <a href="/Album/destroy/{{item[0]}}"><button type="button" class="btn btn-outline-danger">ELIMINAR</button></a>
+                    <a href="/Album/destroy/{{item[0]}}"><button type="button" class="btn btn-danger">ELIMINAR</button></a>
                 </div>
                 
                 

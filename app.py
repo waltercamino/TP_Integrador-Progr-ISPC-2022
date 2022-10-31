@@ -22,7 +22,7 @@ def Contacto():
 
 #------------------ALBUMS----------------------------------------------------------------------
 
-@app.route('/Album/ListarPorAlbum')
+@app.route('/Album/ListarPorArtista')
 def list():
     con = model.Conectar()
     listado = con.ListarAlbumes()
@@ -83,7 +83,7 @@ def saveNewAlbum():
 
     nuevoAlbum = model.Album(0,cod_album,nombre,id_interprete,id_genero,cant_temas,id_discografica,id_formato,fech_lanzamiento,precio,cantidad,caratula)
     con.InsertarAlbum(nuevoAlbum)
-    return redirect('/Album/ListarPorAlbum')
+    return redirect('/Album/ListarPorArtista')
 
 @app.route('/Album/edit/<int:cod_album>')
 def editAlbum(cod_album):
@@ -121,7 +121,7 @@ def saveEditAlbum(id):
 
     editAlbum = model.Album(0,cod_album,nombre,id_interprete,id_genero,cant_temas,id_discografica,id_formato,fech_lanzamiento,precio,cantidad,caratula)
     con.EditarAlbum(editAlbum,id)
-    return redirect('/Album/ListarPorAlbum')
+    return redirect('/Album/ListarPorArtista')
 
 #------------------INTERPRETES-----------------------------------------------------------------
 
@@ -461,9 +461,9 @@ def buscar(page):
         listado = con.ListarFormato()
 
     items = []
-
+    
     for item in listado:
-        if(var.lower().replace(" ", "") in item[1].lower().replace(" ", "")):
+        if(var.lower().replace(" ", "").replace('á','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u') in item[1].lower().replace(" ", "").replace('á','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u')):
             items.append(item)
 
     vacio = len(items) == 0
