@@ -11,7 +11,7 @@ class Conectar():
                 host = 'localhost',
                 port = 3306,
                 user = "root",
-                password = "",
+                password = "Aymara",
                 db = "disqueria"
             )
         except mysql.connector.Error as d_Error:
@@ -280,24 +280,7 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                     print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
 
-# INSERTAR INTÉRPRETE #
-   
-    def InsertarInterprete(self, interprete):
-        if self.conexion.is_connected():
-            try:
-                cursor = self.conexion.cursor()
-                sentenciaSQL = "INSERT into interprete values(null,%s,%s,%s)"
-
-                data = (interprete.getNombre(),interprete.getNacionalidad(),interprete.getFoto())
-
-                cursor.execute(sentenciaSQL,data)
-
-                self.conexion.commit()
-                self.conexion.close()
-                print("Intérprete insertado correctamente")
-                
-            except mysql.connector.Error as d_Error:
-                    print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
+# -----------------------------------------------------------------------------------------------------------------
 
 # INSERTAR TEMA #
    
@@ -368,6 +351,7 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                                     print("¡Ops, algo salió mal!", d_Error)
 
+#-------------------------------------------------------------------------------------------------------------------                    
 
 # INSERTAR FORMATO
 
@@ -500,6 +484,9 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                 print("No se conectó", d_Error)
 
+
+#-------------------------------------------------------------------------------------------------------------------                    
+
 # ELIMINAR TEMA
 
     def EliminarTema(self, id_tema):
@@ -548,6 +535,7 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                                 print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)
 
+#-------------------------------------------------------------------------------------------------------------------                    
 
 #EDITAR INTERPRETE
 
@@ -571,6 +559,7 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                 print("¡Ops, algo salió mal!", d_Error)
 
+#-------------------------------------------------------------------------------------------------------------------                    
 
 #EDITAR DISCOGRAFICA
 
@@ -592,6 +581,7 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                 print("¡Ops, algo salió mal!", d_Error)
 
+#-------------------------------------------------------------------------------------------------------------------                    
 
 #EDITAR FORMATO
 
@@ -613,6 +603,7 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                 print("¡Ops, algo salió mal!", d_Error)
 
+#-------------------------------------------------------------------------------------------------------------------                    
 
 #EDITAR GENERO
 
