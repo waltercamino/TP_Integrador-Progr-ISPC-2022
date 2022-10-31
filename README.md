@@ -3,12 +3,12 @@ Trabajo Practico Integrador de Programacion Inicial ISPC Cohorte 2022
 
 INTEGRANTES GRUPO DE TRABAJO Nº3:
 
- Deborah Priscila Kwiatkowski-> prisciladk23@hotmail.com
- Maria Alejandra Rodriguez-> maria.alerodriguez@gmail.com
- Damian Nicolas Figueroa-> conichan139@gmail.com
- Aaron Ramiro Waldemar Cortaz-> terabitetiger@gmail.com
- Sanchez Hugo Ezequiel-> eze20_rhcp@hotmail.com
- Walter Camino Daniel-> waltercamino@hotmail.com
+- Deborah Priscila Kwiatkowski -> prisciladk23@hotmail.com
+- Maria Alejandra Rodriguez -> maria.alerodriguez@gmail.com
+- Damian Nicolas Figueroa -> conichan139@gmail.com
+- Aaron Ramiro Waldemar Cortez -> terabitetiger@gmail.com
+- Sanchez Hugo Ezequiel -> eze20_rhcp@hotmail.com
+- Walter Camino Daniel -> waltercamino@hotmail.com
 
 En esta actividad integradora debemos plasmar nuestros conocimientos en cuanto al manejo de Python, Bases de Datos y GitHub utilizando diferentes herramientas que hemos adquirido durante el transcurso de la cursada.
 
