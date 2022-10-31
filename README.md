@@ -8,7 +8,7 @@ INTEGRANTES GRUPO DE TRABAJO Nº3:
 - Damian Nicolas Figueroa -> conichan139@gmail.com
 - Aaron Ramiro Waldemar Cortez -> terabitetiger@gmail.com
 - Sanchez Hugo Ezequiel -> eze20_rhcp@hotmail.com
-- Walter Camino Daniel -> waltercamino@hotmail.com
+- Walter Daniel Camino -> waltercamino@hotmail.com
 
 En esta actividad integradora debemos plasmar nuestros conocimientos en cuanto al manejo de Python, Bases de Datos y GitHub utilizando diferentes herramientas que hemos adquirido durante el transcurso de la cursada.
 
