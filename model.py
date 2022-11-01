@@ -289,6 +289,7 @@ class Conectar():
                 cursor.execute(sentenciaSQL,data)
 
                 self.conexion.commit()
+                flash('Interpréte agregado correctamente')
                 self.conexion.close()
                 print("Intérprete insertado correctamente")
                 
@@ -308,6 +309,7 @@ class Conectar():
                 cursor.execute(sentenciaSQL,data)
 
                 self.conexion.commit()
+                flash('Tema agregado correctamente')
                 self.conexion.close()
                 print("Intérprete insertado correctamente")
                 
@@ -329,6 +331,7 @@ class Conectar():
                 cursor.execute(sentenciaSQL,data)
 
                 self.conexion.commit()
+                flash('Género agregado correctamente')
                 self.conexion.close()
                 print("Género insertado correctamente")
 
@@ -358,6 +361,7 @@ class Conectar():
                 album.getCaratula())
                 cursor.execute(sentenciaSQL,data)
                 self.conexion.commit()
+                flash('Álbum agregado correctamente')
                 self.conexion.close()
                 print("Álbum insertado correctamente")        
 
@@ -378,6 +382,7 @@ class Conectar():
                     )
                     cursor.execute(sentenciaSQL,data)
                     self.conexion.commit()
+                    flash('Formato agregado correctamente')
                     self.conexion.close()
                     print("Formato insertado correctamente")        
                 except mysql.connector.Error as d_Error:
@@ -401,6 +406,7 @@ class Conectar():
                     cursor.execute(sentenciaSQL,data)
 
                     self.conexion.commit()
+                    flash('Discográfica agregada correctamente')
                     self.conexion.close()
                     print("Discográfica insertada correctamente")        
 
@@ -419,6 +425,7 @@ class Conectar():
                 data =(id_interprete,)
                 cursor.execute(sentenciaSQL,data)
                 self.conexion.commit()
+                flash('Interprete eliminado correctamente')
                 self.conexion.close()
                 print("Intéprete eliminado correctamente")
             except mysql.connector.Error as d_Error:
@@ -437,6 +444,7 @@ class Conectar():
                 data =(id_genero,)
                 cursor.execute(sentenciaSQL,data)
                 self.conexion.commit()
+                flash('Género eliminado correctamente')
                 self.conexion.close()
                 print("El genero fue eliminado correctamente")
             except mysql.connector.Error as d_Error:
@@ -454,6 +462,7 @@ class Conectar():
                 data =(cod_album,)
                 cursor.execute(sentenciaSQL,data)
                 self.conexion.commit()
+                flash('Álbum eliminado correctamente')
                 self.conexion.close()
                 print("Intéprete eliminado correctamente")
             except mysql.connector.Error as d_Error:
@@ -472,6 +481,7 @@ class Conectar():
                 data =(id_formmato,)
                 cursor.execute(sentenciaSQL,data)
                 self.conexion.commit()
+                flash('Formato eliminado correctamente')
                 self.conexion.close()
                 print("El formato fue eliminado correctamente")
             except mysql.connector.Error as d_Error:
@@ -492,6 +502,7 @@ class Conectar():
                 data =(id_discografica,)
                 cursor.execute(sentenciaSQL,data)
                 self.conexion.commit()
+                flash('Discográfica eliminada correctamente')
                 self.conexion.close()
                 print("Discografica fue eliminado correctamente")
             except mysql.connector.Error as d_Error:
@@ -510,6 +521,7 @@ class Conectar():
                 data =(id_tema,)
                 cursor.execute(sentenciaSQL,data)
                 self.conexion.commit()
+                flash('Tema eliminado correctamente')
                 self.conexion.close()
                 print("tema fue eliminado correctamente")
             except mysql.connector.Error as d_Error:
@@ -542,6 +554,7 @@ class Conectar():
                 cursor.execute(sentenciaSQL,data)
 
                 self.conexion.commit()
+                flash('Formato editado correctamente')
                 self.conexion.close()
                 print("Álbum editado correctamente")        
 
@@ -565,6 +578,7 @@ class Conectar():
                 cursor.execute(sentenciaSQL,data)
                 
                 self.conexion.commit()
+                flash('Interprete editado correctamente')
                 self.conexion.close()
                 
                 print("Interprete editado correctamente")        
@@ -587,6 +601,7 @@ class Conectar():
                 cursor.execute(sentenciaSQL,data)
                 
                 self.conexion.commit()
+                flash('Discográfica editada correctamente')
                 self.conexion.close()
                 
                 print("Discografica editado correctamente")        
@@ -609,6 +624,7 @@ class Conectar():
                 cursor.execute(sentenciaSQL,data)
                 
                 self.conexion.commit()
+                flash('Formato editado correctamente')
                 self.conexion.close()
                 
                 print("Fromato editado correctamente")        
@@ -631,6 +647,7 @@ class Conectar():
                 cursor.execute(sentenciaSQL,data)
                 
                 self.conexion.commit()
+                flash('Género editado correctamente')
                 self.conexion.close()
                 
                 print("Genero editado correctamente")        
@@ -656,6 +673,7 @@ class Conectar():
                 cursor.execute(sentenciaSQL,data)
                 
                 self.conexion.commit()
+                flash('Tema editado correctamente')
                 self.conexion.close()
                 
                 print("Tema editado correctamente")        
