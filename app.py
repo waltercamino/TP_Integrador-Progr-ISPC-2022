@@ -1,4 +1,3 @@
-from urllib import request
 from flask import Flask
 from flask import render_template,redirect,request
 import model
@@ -49,7 +48,7 @@ def ListAlbumNombre():
 def destroyAlbum(cod_album):
     con = model.Conectar()
     con.EliminarAlbum(cod_album)
-    return redirect('/Album/ListarPorAlbum')
+    return redirect('/Album/ListarPorArtista')
 
 @app.route('/Album/Create')
 def createAlbum():
