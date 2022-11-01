@@ -1,7 +1,7 @@
-{% extends '/Albums/layout.html'%}
+{% extends '/layout.html'%}
   {% block body %}
     <div class="container">
-        <form method="post" action="/save-new" enctype="multipart/form-data" class="form-control">
+        <form method="post" action="/Album/save-new" enctype="multipart/form-data" class="form-control">
         Codigo de album:
         <input type="text" name="codAlbum" id="txtCodAlbum " class="form-control" ><br>
         Nombre:
@@ -27,7 +27,7 @@
             {% endfor %}
         </select><br>
         Fecha de lanzamiento:
-        <input type="text" name="fecha" id="fecha" class="form-control"><br>
+        <input type="date" name="fecha" id="fecha" class="form-control" placeholder="YYYY-MM-DD"><br>
         Formato:
         <select name="formato" id="formato" class="form-control">
             {% for formato in formatos %}

@@ -1,22 +1,21 @@
-{% extends '/Albums/layout.html'%}
-
+{% extends '/layout.html'%}
 
   {% block body %}
 
                   
 
-    <div class="mt-3 container align-center listado">
-        <div class="container fluid bg-light row">
+    <div class="mt-3 container align-center">
+        <div class=" bg-light row rounded border">
             <div class="col-3">
                 <h2>Ordenar por:</h2>
             </div>
             <div class="col-6">
-             <button type="button" class="btn btn-outline-info"><a href="/ListarPorAlbum" class="mx-3">Nombre de Album</a></button>
-             <button type="button" class="btn btn-outline-info"><a href="/ListarInterprete" class="mx-3">Artista</a></button>
-             <button type="button" class="btn btn-outline-info"><a href="/ListarPorGenero" class="mx-3">Genero</a></button>
+                <a href="/Album/ListarPorNombre" class="mx-3"><button type="button" class="btn btn-outline-info">Nombre de Album</button></a>
+                <a href="/Album/ListarPorArtista" class="mx-3"><button type="button" class="btn btn-outline-info">Artista</button></a>
+                <a href="/Album/ListarPorGenero" class="mx-3"><button type="button" class="btn btn-outline-info" >Genero</button></a>
             </div>
             <div class="col-2">
-            <button type="button" class="btn btn-outline-info"><a href="/create" class="mx-3">Crear Nuevo</a></button>
+                <a href="/Album/Create" class="mx-3"><button type="button" class="btn btn-outline-info">Crear Nuevo</button></a>
             </div>
             
             
@@ -24,36 +23,42 @@
         
          
             {% for item in listado %}
-            <div class="list-group list-group-horizontal-md align-center">
+            <div class="list-group list-group-horizontal-md align-center rounded border my-2 bg-dark">
                 <div class="col-2"><span></span>
-                    <img class="img-fluid" src="{{item[8]}}" alt="{{item[8]}}">
+                    <img class="img-fluid border-light" src="{{item[8]}}" alt="{{item[8]}}">
                 </div>
                 <div class="col-2" class="row justify-content-center align-items-center minh-100">
-                    <h4>{{item[1]}}</h4>
-                    <p>{{item[0]}}</p>
+                    <h4 class="text-light">{{item[1]}}</h4>
+                    <p class="text-light">{{item[0]}}</p>
                 </div>
                 <div class="col-3">
                     <ul>
-                        <li>{{item[2]}}</li>
-                    <li>{{item[3]}}</li>
-                    <li>{{item[4]}}</li>
+                        <li class="text-light">{{item[2]}}</li>
+                        <li class="text-light">{{item[3]}}</li>
+                        <li class="text-light">{{item[4]}}</li>
                     </ul>    
                 </div>
                 <div class="col-3">
                     <ul>
-                        <li>Precio: ${{item[5]}}</li>
-                        <li>Cantidad: {{item[6]}}</li>
-                        <li>Formato: {{item[7]}}</li>
+                        <li class="text-light">Precio: ${{item[5]}}</li>
+                        <li class="text-light">Cantidad: {{item[6]}}</li>
+                        <li class="text-light">Formato: {{item[7]}}</li>
                     </ul>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-outline-info"><a href="/edit/{{item[0]}}">EDITAR</a></button>
+                    <a href="/Album/edit/{{item[0]}}"><button type="button" class="btn text-light btn-info">EDITAR</button></a>
                     <br>
-                    <button type="button" class="btn btn-outline-danger btn-delete"><a href="/destroy/{{item[0]}}">ELIMINAR</a></button>
+                    <a href="/Album/destroy/{{item[0]}}"><button type="button" class="btn btn-danger">ELIMINAR</button></a>
                 </div>
+                
                 
             </div>       
             {% endfor %}
+            {% if vacio %}
+                <div class="list-group list-group-horizontal-md align-center ">
+                    <h5 class="col d-flex justify-content-center mt-5 mb-5"> No se han encontrado resultados</h5>
+                </div>
+                {% endif %}
         </div>
     </div>
 

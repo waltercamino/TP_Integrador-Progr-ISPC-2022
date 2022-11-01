@@ -1,0 +1,16 @@
+{% extends '/layout.html'%}
+  {% block body %}
+    
+    
+    <div class="container">
+        <a href="/">Inicio</a>
+        <form method="post" action="/Formato/save-edit/{{Formato[0]}}" enctype="multipart/form-data" class="form-control">
+            Nombre:
+            <input type="text" name="nombre" id="nombre" class="form-control" value="{{Formato[1]}}"><br>
+            <input class="btn btn-primary" type="submit" value="Guardar Cambios" class="form-control">
+            
+        
+        </form>
+    </div>
+    
+{% endblock %}

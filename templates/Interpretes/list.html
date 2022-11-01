@@ -1,0 +1,53 @@
+{% extends '/layout.html'%}
+
+  {% block body %}
+
+                  
+
+    <div class="mt-3 container align-center">
+        <div class="bg-secondary rounded row align-center mb-2">
+            <div class="col-5">
+            </div>
+            <div class="col-5 align-center">
+                <h2 class="mt-3 text-light">Artistas</h2>
+            </div>
+            <div class="col-2">
+                <a href="/Interprete/Create" class="mx-3"><button type="button" class="btn btn-dark">Crear Nuevo</button></a>
+            </div>
+            
+            
+        </div>
+        <div class="row align-items-center">
+         
+            {% for item in listado %}
+            <div class="list-group list-group-horizontal-md col-3  ">
+                <div class="rounded container fluid m-1 bg-dark row">
+                    <div class="col-12">
+                        <img height="200px" width="200px" class="img-fluid p-3 rounded-circle" src="{{item[3]}}" alt="{{item[3]}}">
+                        
+                    </div>
+                    <div class="col-7 justify-content-center align-items-center minh-100">
+                        <h4 class="text-light">{{item[1]}}</h4>
+                        <p class="text-light">{{item[2]}}</p>
+                    </div>
+                    <div class="col-5">
+                        <a href="/Interprete/edit/{{item[0]}}"><button type="button" class="btn text-light btn-info">Editar</button></a>
+                        <br>
+                        <a href="/Interprete/destroy/{{item[0]}}"><button type="button" class="btn btn-danger">Borrar</button></a>
+                    </div>
+                </div>
+                
+                
+                
+            </div>       
+            {% endfor %}
+            {% if vacio %}
+                <div class="list-group list-group-horizontal-md align-center ">
+                    <h5 class="col d-flex justify-content-center mt-5 mb-5"> No se han encontrado resultados</h5>
+                </div>
+                {% endif %}
+        </div>
+        </div>
+    </div>
+
+    {% endblock %}

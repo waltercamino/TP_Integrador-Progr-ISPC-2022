@@ -27,16 +27,24 @@
                   <span class="visually-hidden"></span>
                 </a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  PRODUCTOS
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href='/ListarPorInterprete'>ARTISTA</a></li>
-                  <li><a class="dropdown-item" href='/ListarPorNombre'>ALBUM</a></li>
-                  <li><a class="dropdown-item" href='/ListarPorGenero'>GENERO</a></li>
-                </ul>
+              <li class="nav-item">
+                <a class="nav-link" href='/Album/ListarPorArtista'>ALBUMES</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Interprete/Listar">ARTISTAS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Genero/Listar">GENEROS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Tema/Listar">TEMAS</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/Discografica/Listar">DISCOGRAFICAS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Formato/Listar">FORMATOS</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/Contacto">CONTACTO</a>
@@ -45,7 +53,7 @@
             </ul>
             <form class="d-flex" action="/search/{{page}}" method="post" enctype="multipart/form-data">
               <input class="form-control me-sm-2" type="text"  name="buscar" id="buscar" value="{{var}}" placeholder="Buscar">
-              <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+              <button class="btn btn-dark my-2 my-sm-0" type="submit">IR</button>
             </form>
 
           </div>
@@ -53,6 +61,8 @@
       </nav>
       
 
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
 {% block body %}
 
@@ -61,10 +71,5 @@
     <img class="logo-footer" src="../../static/img/logo.jpg">
     <p class="copyright">&copy Copyright ISPC - 2022</p>
 </footer>
-<script src="{{url_for('static', filename ='js/main.js')}}"></script>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
-
 </body>
 </html>    

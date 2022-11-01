@@ -11,7 +11,7 @@ class Conectar():
                 host = 'localhost',
                 port = 3306,
                 user = "root",
-                password = "Aymara",
+                password = "",
                 db = "disqueria"
             )
         except mysql.connector.Error as d_Error:
@@ -211,25 +211,6 @@ class Conectar():
                     print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
 
 
-
-# LISTAR POR INTERPRETE
-    def ListarPorInterprete(self):     
-       if self.conexion.is_connected():
-           try:
-    
-               cursor = self.conexion.cursor()
-               sentenciaSQL = "SELECT cod_album, album.nombre, interprete.nombre, genero.nombre, discografica.nombre, precio, cantidad, formato.tipo, caratula FROM album, interprete, discografica,formato,genero WHERE album.id_interprete = interprete.id_interprete AND album.id_discografica = discografica.id_discografica AND album.id_formato = formato.id_formato AND album.id_genero = genero.id_genero ORDER By album.nombre asc"
-               sentenciaSQL = "SELECT cod_album, album.nombre, interprete.nombre, genero.nombre, discografica.nombre, precio, cantidad, formato.tipo, caratula FROM album, interprete, discografica,formato,genero WHERE album.id_interprete = interprete.id_interprete AND album.id_discografica = discografica.id_discografica AND album.id_formato = formato.id_formato AND album.id_genero = genero.id_genero ORDER By interprete.nombre asc"
-               cursor.execute(sentenciaSQL)
-               resultados = cursor.fetchall()
-               # self.conexion.close()
-               return resultados
-
-           except mysql.connector.Error as d_Error:
-                   print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error)                   
-
-
-
 # LISTAR TEMA #
 
     def ListarTema(self):
@@ -298,9 +279,6 @@ class Conectar():
                 
             except mysql.connector.Error as d_Error:
                     print("¡Ops, algo salió mal! No se conectó a la base de datos", d_Error) 
-
-
-# -----------------------------------------------------------------------------------------------------------------
 
 # INSERTAR TEMA #
    
@@ -483,6 +461,7 @@ class Conectar():
                 print("El formato fue eliminado correctamente")
             except mysql.connector.Error as d_Error:
                 print("No se conectó", d_Error)
+
 
 
 #-------------------------------------------------------------------------------------------------------------------
@@ -669,7 +648,7 @@ class Conectar():
             except mysql.connector.Error as d_Error:
                 print("¡Ops, algo salió mal!", d_Error)
 
- #---------------------------------------------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------------------------------------------
  
 # CLASES
 
@@ -889,7 +868,7 @@ def __str__(self) -> str:
 #con.ListarFormato()
 #con.EliminarDiscografica(8)
 # con.InsertarInterprete('Luis Alberto Spinetta', 'Argentina', '')
-
+#con.TraerInterprete(4)
 
 # for interprete in con.ListarInterprete():
 #  print(interprete)
