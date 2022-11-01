@@ -45,7 +45,7 @@ def ListAlbumNombre():
     return render_template('Albums/list.html',listado=listado,page=page)    
    
 @app.route('/ListarPorInterprete')
-def ListInterprete():
+def ListByInterprete():
     con = model.Conectar()
     page = "Albums"
     listado = con.ListarPorInterprete()
