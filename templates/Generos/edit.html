@@ -2,8 +2,7 @@
   {% block body %}
     
     
-    <div class="container">
-        <a href="/">Inicio</a>
+    <div class="container my-3">
         <form method="post" action="/Genero/save-edit/{{Genero[0]}}" enctype="multipart/form-data" class="form-control">
             Nombre:
             <input type="text" name="nombre" id="nombre" class="form-control" value="{{Genero[1]}}"><br>

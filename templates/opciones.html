@@ -1,0 +1,44 @@
+{% extends '/layout.html'%}
+  {% block body %}
+
+  <div class="mt-3 container align-center">
+    <div class="bg-secondary rounded d-flex justify-content-center mb-2 ">
+            <h2 class="py-2 text-light">¿Que Accion Desea Realizar?</h2>
+       
+    </div>
+ 
+     
+    <div class="list-group list-group-horizontal-md align-center my-1 row">
+
+        <div class="col-12 d-flex justify-content-center mt-3">
+            <a href="/Album/Create" class="mx-3"><button type="button" class="btn btn-success">Crear Nuevo Album</button></a>
+            <a href="/Album/ListarPorArtista" class="mx-3"><button type="button" class="btn btn-primary">Editar Albumes</button></a>
+            <a href="/Album/ListarPorArtista" class="mx-3"><button type="button" class="btn btn-danger">Eliminar Albumes</button></a>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <a href="/Album/ListarPorArtista" class="mx-3"><button type="button" class="btn btn-dark">Listar Albums por Artista</button></a>
+            <a href="/Album/ListarPorGenero" class="mx-3"><button type="button" class="btn btn-dark">Listar Albums por Genero</button></a>
+            <a href="/Album/ListarPorNombre" class="mx-3"><button type="button" class="btn btn-dark">Listar Albums por Nombre</button></a>
+        </div>
+        <div class="col-12 d-flex justify-content-center mt-5">
+            <h3>Otras Acciones:</h3>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            
+            <a href="/Interprete/Listar" class="mx-3"><button type="button" class="btn btn-dark">Listar Artistas</button></a>
+            <a href="/Genero/Listar" class="mx-3"><button type="button" class="btn btn-dark">Listar Generos</button></a>
+            <a href="/Tema/Listar" class="mx-3"><button type="button" class="btn btn-dark">Listar Temas</button></a>
+            
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <a href="/Discografica/Listar" class="mx-3"><button type="button" class="btn btn-dark">Listar Discograficas</button></a>
+            <a href="/Formato/Listar" class="mx-3"><button type="button" class="btn btn-dark">Listar Formatos</button></a>
+        </div>
+        
+        
+    </div>       
+
+    </div>
+</div>
+
+  {% endblock %}

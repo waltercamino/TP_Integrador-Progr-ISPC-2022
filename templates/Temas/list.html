@@ -5,14 +5,14 @@
                   
 
     <div class="mt-3 container align-center">
-        <div class="container fluid bg-light row">
-            <div class="col-3">
+        <div class="bg-secondary rounded row align-center mb-2">
+            <div class="col-5">
             </div>
-            <div class="col-6">
-                <h2 class="mt-3">TEMAS</h2>
+            <div class="col-5 align-center">
+                <h2 class="mt-3 text-light">Temas</h2>
             </div>
             <div class="col-2">
-                <a href="/Tema/Create" class="mx-3"><button type="button" class="btn btn-outline-info">Crear Nuevo</button></a>
+                <a href="/Tema/Create" class="mx-3"><button type="button" class="btn btn-dark">Crear Nuevo</button></a>
             </div>
             
             
@@ -20,31 +20,29 @@
         
          
             {% for item in listado %}
-            <div class="list-group list-group-horizontal-md align-center">
-                <div class="col-2"><span></span>
+            <div class="list-group list-group-horizontal-md align-center border my-2 bg-dark">
 
-                </div>
-                <div class="col-2" class="row justify-content-center align-items-center minh-100">
-                    <h4>{{item[1]}}</h4>
-                    <p>{{item[0]}}</p>
+                <div class="col-4" class="row align-items-center minh-100">
+                    <h4 class="mx-3 text-light">{{item[1]}}</h4>
+                    <p class="mx-3 text-light">{{item[0]}}</p>
                 </div>
                 <div class="col-3">
                     <ul>
-                        <li>{{item[2]}}</li>
-                    <li>{{item[3]}}</li>
-                    <li>{{item[4]}}</li>
+                        <li class="text-light"><b>Duracion:</b>  {{item[2]}}</li>
+                        <li class="text-light"><b>Autor:</b>  {{item[3]}}</li>
+                        <li class="text-light"><b>Compositor:</b>  {{item[4]}}</li>
                     </ul>    
                 </div>
                 <div class="col-3">
                     <ul>
-                        <li>{{item[5]}}</li>
-                        <li>{{item[6]}}</li>
+                        <li class="text-light"><b>Album:</b>  {{item[5]}}</li>
+                        <li class="text-light"><b>Interprete:</b>  {{item[6]}}</li>
                     </ul>
                 </div>
                 <div class="col-2">
-                    <a href="/Tema/edit/{{item[0]}}"><button type="button" class="btn btn-outline-info">EDITAR</button></a>
+                    <a href="/Tema/edit/{{item[0]}}"><button type="button" class="btn text-light btn-info">EDITAR</button></a>
                     <br>
-                    <a href="/Tema/destroy/{{item[0]}}"><button type="button" class="btn btn-outline-danger">ELIMINAR</button></a>
+                    <a href="/Tema/destroy/{{item[0]}}"><button type="button" class="btn btn-danger">ELIMINAR</button></a>
                 </div>
                 
                 

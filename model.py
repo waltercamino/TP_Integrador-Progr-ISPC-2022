@@ -36,6 +36,21 @@ class Conectar():
             except mysql.connector.Error as descripcionError:
                 print("¡No se conectó!",descripcionError)
 
+# TRAER UN SOLO ALBUM PERO POR ID #
+
+    def TraerAlbumByID(self,id):
+            if self.conexion.is_connected():
+                try:
+                    cursor = self.conexion.cursor()
+                    senteciaSQL = "SELECT * FROM album WHERE id_album = "+str(id)
+                    cursor.execute(senteciaSQL)
+                    resultados = cursor.fetchall()
+                    self.conexion.close()
+                    return resultados[0]
+
+
+                except mysql.connector.Error as descripcionError:
+                    print("¡No se conectó!",descripcionError)
 # TRAER UN SOLO INTERPRETE #
 
     def TraerInterprete(self,id):

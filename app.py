@@ -17,7 +17,17 @@ def Index():
 
 @app.route('/Contacto')
 def Contacto():
- return render_template('/contacto.html')  
+    page = "Albums"
+
+    return render_template('/contacto.html', page = page)  
+
+#------------------Opciones----------------------------------------------------------------------
+
+@app.route('/Opciones')
+def Opciones():
+    page = "Albums"
+
+    return render_template('/opciones.html', pages = page)
 
 #------------------ALBUMS----------------------------------------------------------------------
 
@@ -374,7 +384,17 @@ def saveEditFormato(id):
 def ListTemaNombre():
     con = model.Conectar()
     page = "Temas"
-    listado = con.ListarTema()
+    list = con.ListarTema()
+    listado = []
+    for item in list:
+        a_con = model.Conectar()
+        album = a_con.TraerAlbumByID(item[5])
+        i_con = model.Conectar()
+        interprete = i_con.TraerInterprete(item[6])
+
+        new = [item[0],item[1],item[2],item[3],item[4],album[2],interprete[1]]
+        listado.append(new)
+
     
     return render_template('Temas/list.html',listado=listado,page=page)    
 
