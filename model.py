@@ -422,9 +422,15 @@ class Conectar():
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sentenciaSQL = "DELETE from interprete WHERE id_interprete = %s "
+
+                sentenciaSQL = "DELETE from tema WHERE id_interprete = %s "
+                sentenciaSQL2 = "DELETE from album WHERE id_interprete = %s "
+                sentenciaSQL3 = "DELETE from interprete WHERE id_interprete = %s "
+
                 data =(id_interprete,)
                 cursor.execute(sentenciaSQL,data)
+                cursor.execute(sentenciaSQL2,data)
+                cursor.execute(sentenciaSQL3,data)
                 self.conexion.commit()
                 flash('Interprete eliminado correctamente')
                 self.conexion.close()
@@ -441,9 +447,24 @@ class Conectar():
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sentenciaSQL = "DELETE from genero WHERE id_genero = %s "
+
                 data =(id_genero,)
+
+                sentenciaSQL = "SELECT id_album from album WHERE id_genero = %s "
                 cursor.execute(sentenciaSQL,data)
+                resultados = cursor.fetchall()
+                for item in resultados:
+                    newSQL = "DELETE from tema WHERE id_album = %s "
+                    dataItem = (item[0],)
+                    cursor.execute(newSQL,dataItem)
+                    
+
+                sentenciaSQL2 = "DELETE from album WHERE id_genero = %s "
+                sentenciaSQL3 = "DELETE from genero WHERE id_genero = %s "
+                
+
+                cursor.execute(sentenciaSQL2,data)
+                cursor.execute(sentenciaSQL3,data)
                 self.conexion.commit()
                 flash('Género eliminado correctamente')
                 self.conexion.close()
@@ -455,13 +476,17 @@ class Conectar():
 
 # ELIMINAR ALBUM
 
-    def EliminarAlbum(self, cod_album):
+    def EliminarAlbum(self, id):
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sentenciaSQL = "DELETE from album WHERE cod_album = %s "
-                data =(cod_album,)
+
+                sentenciaSQL = "DELETE from tema WHERE id_album = %s"
+                sentenciaSQL2 = "DELETE from album WHERE id_album = %s"
+                data = (id,)
+
                 cursor.execute(sentenciaSQL,data)
+                cursor.execute(sentenciaSQL2,data)
                 self.conexion.commit()
                 flash('Álbum eliminado correctamente')
                 self.conexion.close()
@@ -474,13 +499,28 @@ class Conectar():
 
 # ELIMINAR FORMATO
 
-    def EliminarFormato(self, id_formmato):
+    def EliminarFormato(self, id_formato):
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sentenciaSQL = "DELETE from formato WHERE id_formato = %s "
-                data =(id_formmato,)
+
+                data =(id_formato,)
+
+                sentenciaSQL = "SELECT id_album from album WHERE id_formato = %s "
                 cursor.execute(sentenciaSQL,data)
+                resultados = cursor.fetchall()
+                for item in resultados:
+                    newSQL = "DELETE from tema WHERE id_album = %s "
+                    dataItem = (item[0],)
+                    cursor.execute(newSQL,dataItem)
+                    
+
+                sentenciaSQL2 = "DELETE from album WHERE id_formato = %s "
+                sentenciaSQL3 = "DELETE from formato WHERE id_formato = %s "
+                
+
+                cursor.execute(sentenciaSQL2,data)
+                cursor.execute(sentenciaSQL3,data)
                 self.conexion.commit()
                 flash('Formato eliminado correctamente')
                 self.conexion.close()
@@ -499,9 +539,24 @@ class Conectar():
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sentenciaSQL = "DELETE from discografica WHERE id_discografica = %s "
+
                 data =(id_discografica,)
+
+                sentenciaSQL = "SELECT id_album from album WHERE id_discografica = %s "
                 cursor.execute(sentenciaSQL,data)
+                resultados = cursor.fetchall()
+                for item in resultados:
+                    newSQL = "DELETE from tema WHERE id_album = %s "
+                    dataItem = (item[0],)
+                    cursor.execute(newSQL,dataItem)
+                    
+
+                sentenciaSQL2 = "DELETE from album WHERE id_discografica = %s "
+                sentenciaSQL3 = "DELETE from discografica WHERE id_discografica = %s "
+                
+
+                cursor.execute(sentenciaSQL2,data)
+                cursor.execute(sentenciaSQL3,data)
                 self.conexion.commit()
                 flash('Discográfica eliminada correctamente')
                 self.conexion.close()

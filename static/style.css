@@ -43,9 +43,10 @@ footer{
 }
 
 #Boton_Inicio{
-    top: 77%;
+    left: 25%;
+    top: 75%;
 }
 
 footer {
-    min-height: calc(100vh - 1px);;
+    min-height: calc(44vh - 1px);;
 }

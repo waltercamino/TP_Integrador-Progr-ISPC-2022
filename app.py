@@ -59,14 +59,17 @@ def ListAlbumNombre():
 def ListByInterprete():
     con = model.Conectar()
     page = "Albums"
-    listado = con.ListarPorInterprete()
+    listado = con.ListarAlbumes()
     
     return render_template('Albums/list.html',listado=listado,page=page)  
 
 @app.route('/Album/destroy/<int:cod_album>')
 def destroyAlbum(cod_album):
     con = model.Conectar()
-    con.EliminarAlbum(cod_album)
+    a = model.Conectar()
+    data = a.TraerAlbum(cod_album)
+    id = data[0]
+    con.EliminarAlbum(id)
     return redirect('/Album/ListarPorArtista')
 
 @app.route('/Album/Create')
