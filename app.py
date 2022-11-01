@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, flash
 from flask import render_template,redirect,request, flash
 import model
 
