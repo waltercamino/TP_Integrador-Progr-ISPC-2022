@@ -13,7 +13,7 @@ INTEGRANTES GRUPO DE TRABAJO Nº3:
 En esta actividad integradora plasmamos nuestros conocimientos en cuanto al manejo de Python, Bases de Datos, flask y GitHub utilizando diferentes herramientas que hemos adquirido durante el transcurso de la cursada.
 
             NUESTRA DISCOGRAFIA SE LLAMA "PLANETA MUSICAL"
-para el uso de este programa es necesario instalar la libreria flask de la siguiente forma:
+para el uso de este programa es necesario instalar las siguientes librerias de la siguiente forma:
     
     Framework Flask --- pip install Flask
     conector a My Sql --- pip install mysql-connector-python
