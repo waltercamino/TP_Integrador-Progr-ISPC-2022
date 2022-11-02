@@ -41,7 +41,7 @@ les mostramos como quedan ordenados por tema...
 
 Como ya dijimos anteriormente todo acompañado de su imagen lo cual asi mas visible y hasta facil de encontrar a la hora de buscar en este caso un tema o album especifico.
 
-O directamente dirigiendose a el munu 'opciones' podran encontrar todo lo que es posible lograr con este programa hecho para que su uso sea de lo mas facil al alcance de cualquier usuario.
+O directamente dirigiendose a el menu 'opciones' podran encontrar todo lo que es posible lograr con este programa hecho para que su uso sea de lo mas facil al alcance de cualquier usuario.
 
 ![](/opciones.jpg)
 
