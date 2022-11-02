@@ -18,6 +18,8 @@ para el uso de este programa es necesario instalar las siguientes librerias de l
     Framework Flask --- pip install Flask
     conector a My Sql --- pip install mysql-connector-python
 
+para cargar la base de datos debe utilizar el archivo "disqueria v-01-11.sql"
+
 Una vez abierto nuestro programa vas a encontrar la pagina principal y un menu de opciones
 
 ![](/pagina%20principal.jpg)
