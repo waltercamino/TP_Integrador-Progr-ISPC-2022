@@ -7,38 +7,42 @@ INTEGRANTES GRUPO DE TRABAJO Nº3:
 - Maria Alejandra Rodriguez -> maria.alerodriguez@gmail.com
 - Damian Nicolas Figueroa -> conichan139@gmail.com
 - Aaron Ramiro Waldemar Cortez -> terabitetiger@gmail.com
-- Hugo Ezequiel Snchez -> eze20_rhcp@hotmail.com 
+- Hugo Ezequiel Sanchez -> eze20_rhcp@hotmail.com 
 - Walter Daniel Camino -> waltercamino@hotmail.com
 
-En esta actividad integradora debemos plasmar nuestros conocimientos en cuanto al manejo de Python, Bases de Datos y GitHub utilizando diferentes herramientas que hemos adquirido durante el transcurso de la cursada.
+En esta actividad integradora plasmamos nuestros conocimientos en cuanto al manejo de Python, Bases de Datos, flask y GitHub utilizando diferentes herramientas que hemos adquirido durante el transcurso de la cursada.
 
-Las consignas del trabajo son: Una conocida casa de música de la ciudad de Formosa capital solicitó a nuestra empresa de software que le confeccionemos un nuevo sistema                                  que gestione sus Discos, Cassettes y Compact Discs, que vende a los coleccionistas y turistas que asisten a su local, en el centro de la ciudad.  
+            NUESTRA DISCOGRAFIA SE LLAMA "PLANETA MUSICAL"
+para el uso de este programa es necesario instalar la libreria flask de la siguiente forma:
+    
+    Framework Flask --- pip install Flask
+    conector a My Sql --- pip install mysql-connector-python
 
-El sistema debe proveer los siguientes requerimientos por parte del cliente: 
+Una vez abierto nuestro programa vas a encontrar la pagina principal y un menu de opciones
 
--	Alta, baja y modificación de datos de un álbum musical.
--	Listado de álbumes disponibles por artista, en orden alfabético.
--	Listado por género musical.
--	Búsqueda por nombre de un álbum.
+![](/pagina%20principal.jpg)
+
+Navegando por nuestras opciones encontraras entre las distintas opciones 
+- alta y baja de discos e interpretes
+- listados de temas, albunes y artistas
+- generos de musica 
+- formatos de albunes 
+- distintas imagenes de artistas o discos que hacen mas didacto el uso del mismo
+
+aca les dejo un ejemplo de una de nuestras opciones, el listado de albunes
+
+![](/albunes.jpg)
 
 
-El esquema de la base de datos propuesta es la siguiente:
+les mostramos como quedan ordenados por tema...
 
-TABLA ALBUM: con sus correspondientes campos
-TABLA FORMATO: con sus correspondientes campos
-TABLE TEMA: con sus correspondientes campos
-TABLA INTERPRETE: con sus correspondientes campos
-TABLA GENERO:  con sus correspondientes campos
-TABLA DISCOGRAFICA:  con sus correspondientes campos
+![](/temas.jpg)
 
-Criterios de evaluación del trabajo práctico: -	Conexión del programa a la base de datos, alta, baja y modificación de datos (60%)
--	Listados requeridos (10%)
--	Presentación del software con interfaz gráfica, ventanas o web (10%)
--	Innovación al software implementada por parte del grupo de trabajo* (20%)
 
-riterios de presentación del trabajo práctico: -	Creación del mismo por equipo y/o grupo de trabajo (no se aceptan trabajos individuales)
--	Creación de un repositorio compartido para el grupo de trabajo, rama para cada integrante.
--	Presentaciones de los avances del trabajo práctico de manera semanal. Acompañamiento a cargo de profesor tutor designado.
--	Exposición grupal y explicación del software creado por parte del equipo de trabajo, indicando sus funcionalidades, al finalizar el proyecto.
+Como ya dijimos anteriormente todo acompañado de su imagen lo cual asi mas visible y hasta facil de encontrar a la hora de buscar en este caso un tema o album especifico.
 
-FECHA DE ENTREGA Y EXPOSICION: miercoles 2 de noviembre de 2022 horario de clase sincronico aproximadamente 18:00 hs Argentina
+O directamente dirigiendose a el munu 'opciones' podran encontrar todo lo que es posible lograr con este programa hecho para que su uso sea de lo mas facil al alcance de cualquier usuario.
+
+![](/opciones.jpg)
+
+Simplemente gracias por haber llegado hasta aca y deseo de que disfruten del uso de esta aplicacion.
